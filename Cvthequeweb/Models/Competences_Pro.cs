@@ -9,7 +9,5 @@ namespace Cvthequeweb.Models
     {
         public int Id { get; set; }
         public string Competences { get; set; }
-        public string CandidatId { get; set; }
-        public Candidat candidat { get; set; }
     }
 }

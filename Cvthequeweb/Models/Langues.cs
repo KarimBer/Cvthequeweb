@@ -10,7 +10,5 @@ namespace Cvthequeweb.Models
         public int Id { get; set; }
         public string Langue { get; set; }
         public string Niveau { get; set; }
-        public string CandidatId { get; set; }
-        public Candidat candidat { get; set; }
     }
 }
