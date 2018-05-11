@@ -40,11 +40,17 @@
                         <span class="navbar-toggler-bar navbar-kebab"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <ul class="nav navbar-nav">
-                            <li class="btn btn-primary" style="background-color:dodgerblue;margin-right:800px;">
-                                @Html.ActionLink("Modèles CV", "", "")
-                            </li>
-                        </ul>
+                        @if (Request.IsAuthenticated)
+                         {
+                             if (User.IsInRole("Administrateur"))
+                             {
+                                   <ul class="nav navbar-nav">
+                                       <li class="btn btn-primary" style="background-color:dodgerblue;margin-right:800px;">
+                                       <a href="/Candidat/Index">Candidats</a>
+                                       </li>
+                                   </ul>
+                             }
+                         }
                         <ul class="navbar-nav">
                             @Html.Partial("_LoginPartial")
                         </ul>
@@ -64,7 +70,7 @@
                                     Grâce à nos générateurs de CV, créez simplement et rapidement des candidatures convaincantes.
                                 </h2>
                                 <div style="width:200px;height:50px;background-color:rgb(158, 207, 63);position:relative;">
-                                    <a href="Account/Register">
+                                    <a href="../Account/Register">
                                         <div style="color:white;font-family:Arial, Helvetica, sans-serif;font-weight:600;font-size:12px;text-align:center;line-height:50px;">ESSAYER GRATUITEMENT</div>
                                     </a>
                                 </div>
@@ -73,9 +79,56 @@
                     </div>
                 </div>
             </div>
+            <div style="display:flex; width:100%;height:500px;position:relative;background-color:#00abec;">
+                <div style="width:75%;height:400px;position:relative;margin-left:180px;margin-top:50px;">
+                    <div style="width:100%;height:80px;position:relative;">
+                        <h2 style="color:#cccccc;">Générateur de CV</h2>
+                    </div>
+                    <div class="row" style="width:100%;height:350px;position:relative;margin-left:0px;">
+                        <div class="column" style="height:100%;width:350px;position:relative;margin-left:5px;">
+                            <h6><b>Des modèles de CV adaptés</b></h6>
+                            <div style="width:100%;height:180px;position:relative;background-image: url('../../assets/img/Sans titre-100.png');background-repeat: no-repeat;">
+                                <a href="#"></a>
+                            </div>
+                            <br />
+                            <div class="txt">
+                                Conçus par des professionnels du conseil à l’emploi,
+                                <b>nos modèles de CV vous aideront à valoriser vos compétences</b>
+                                , quel que soit votre parcours, que vous soyez débutant ou expérimenté.
+                            </div>
+                        </div>
+                        <div class="column" style="height:100%;width:350px;position:relative;;margin-left:10px;">
+                            <h6><b>Des mises en pages spéctaculaires</b></h6>
+                            <div style="width:100%;height:180px;position:relative;background-image: url('../../assets/img/Sans titre-102.png');background-repeat: no-repeat;">
+                                <a href="#"></a>
+                            </div>
+                            <br />
+                            <div class="txt">
+                                Grâce à notre interface intuitive, vous créez vos cv en toute simplicité,
+                                <b>plus besoin de vous soucier de la mise en page</b>
+                                , elle est automatique.
+                                <b>Changez de design en un clic</b>
+                            </div>
+                        </div>
+                        <div class="column" style="height:100%;width:350px;position:relative;margin-left:10px;">
+                            <h6><b>Une intérface facile à utiliser</b></h6>
+                            <div style="width:100%;height:180px;position:relative;background-image: url('../../assets/img/Sans titre-103.png');background-repeat: no-repeat;">
+                                <a href="#"></a>
+                            </div>
+                            <br />
+                            <div class="txt">
+                                Découvrez toutes les fonctionnalités pour comprendre comment vous allez pouvoir rédiger de meilleurs CV avec moins d’effort
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
+@*<footer style="width:100%;height:300px;background-color:aqua;display:block;position:relative;">
+
+</footer>*@
 <script src="../assets/js/core/jquery.min.js"></script>
 <script src="../assets/js/core/popper.min.js"></script>
 <script src="../assets/js/core/bootstrap.min.js"></script>

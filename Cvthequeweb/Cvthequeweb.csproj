@@ -273,6 +273,9 @@
     <Content Include="assets\img\header.jpg" />
     <Content Include="assets\img\mike.jpg" />
     <Content Include="assets\img\now-logo.png" />
+    <Content Include="assets\img\Sans titre-100.png" />
+    <Content Include="assets\img\Sans titre-102.png" />
+    <Content Include="assets\img\Sans titre-103.png" />
     <Content Include="assets\img\Sans titre-20.png" />
     <Content Include="assets\img\Sans titre-22.png" />
     <Content Include="assets\js\core\bootstrap.min.js" />

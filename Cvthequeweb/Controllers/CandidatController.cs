@@ -63,6 +63,7 @@ namespace Cvthequeweb.Controllers
             }else
             {
                 var candidatdb = db.candidat.SingleOrDefault(u => u.Id == candidat.Id);
+                var experience_prodb = db.experiences_pro.SingleOrDefault(u => u.Id == candidat.experiences_Pro.Id);
                 if (candidatdb == null)
                 {
                     return HttpNotFound();
@@ -85,6 +86,8 @@ namespace Cvthequeweb.Controllers
                 candidatdb.Situation_Familiale = candidat.Situation_Familiale;
                 candidatdb.Ville = candidat.Ville;
                 candidatdb.CIN = candidat.CIN;
+
+                //exp.Date_Debut = ex
             }
             db.SaveChanges();
             return RedirectToAction("Index");

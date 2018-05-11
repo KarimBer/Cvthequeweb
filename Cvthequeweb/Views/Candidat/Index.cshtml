@@ -36,13 +36,13 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li>
-                        <a href="../Candidats/Create">
+                        <a href="../Candidat/Add">
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Nouveau Candidat</p>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="../Candidats/Index">
+                        <a href="../Candidat/Index">
                             <i class="now-ui-icons users_circle-08"></i>
                             <p>Liste des Candidats</p>
                         </a>
@@ -114,38 +114,37 @@
                     </div>
                 </div>
             </nav>
-            <div style="margin-top:100px; margin-left:15px;margin-right:15px;">
+            <div style="margin-top:100px; margin-left:15px;margin-right:15px;width:1000px;">
+                @Html.ActionLink("Exporter Vers Excel", "", "",new { @class="btn btn-primary" , @style="float:Right"})
                 <table id="tablecandidat" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Nom</th>
                             <th>Prénom</th>
-                            <th>Email</th>
-                            <th>Téléphone</th>
-                            <th>Adresse</th>
-                            <th>Date de naissance</th>
-                            <th>Genre</th>
-                            <th>Situation Familiale</th>
+                            <th>Poste Souhaité</th>
                             <th>Ville</th>
-                            <th>CIN</th>
+                            <th>Genre</th>
+                            <th>Tel</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
 
                         @foreach (var m in Model)
                         {
-                            <tr>
-                                <td>@m.Nom</td>
-                                <td>@m.Prenom</td>
-                                <td>@m.Email</td>
-                                <td>@m.Tel</td>
-                                <td>@m.Adresse</td>
-                                <td>@m.Date_Naissance</td>
-                                <td>@m.Genre</td>
-                                <td>@m.Situation_Familiale</td>
-                                <td>@m.Ville</td>
-                                <td>@m.CIN</td>
-                            </tr>
+                        <tr>
+                            <td>@m.Nom</td>
+                            <td>@m.Prenom</td>
+                            <td>@m.poste_souhaite</td>
+                            <td>@m.Ville</td>
+                            <td>@m.Genre</td>
+                            <td>@m.Tel</td>
+                            <td>@Html.ActionLink("Afficher CV", "", "", new { @class = "btn btn-success" })</td>
+                            <td>@Html.ActionLink("Modifier", "", "", new { @class = "btn btn-warning" })</td>
+                            <td>@Html.ActionLink("Supprimer", "", "", new { @class = "btn btn-danger" })</td>
+                        </tr>
                         }
                     </tbody>
                 </table>
