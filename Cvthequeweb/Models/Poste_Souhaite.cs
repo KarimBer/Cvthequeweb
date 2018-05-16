@@ -12,5 +12,7 @@ namespace Cvthequeweb.Models
         public float Fourchette_salariale { get; set; }
         public string Secteur_Activite { get; set; }
         public string Mobile { get; set; }
+        public string CandidatId { get; set; }
+        public virtual Candidat candidat { get; set; }
     }
 }

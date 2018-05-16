@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.props')" />
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.2.8.3\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.2.8.3\build\Microsoft.TypeScript.MSBuild.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.8.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.8.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -61,26 +61,26 @@
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.5.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.6.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.5.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.6.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.5.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.6.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.Web, Version=2.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    <Reference Include="Microsoft.AI.Web, Version=2.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.6.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer, Version=2.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.5.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.6.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ApplicationInsights, Version=2.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.2.5.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.6.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.1\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.3\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -113,8 +113,20 @@
     <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ReportViewerForMvc, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReportViewerForMvc.1.1.1\lib\net45\ReportViewerForMvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -122,6 +134,9 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -129,22 +144,28 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -190,62 +211,49 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CandidatController.cs" />
+    <Compile Include="Controllers\Centres_InteretController.cs" />
+    <Compile Include="Controllers\CertificationsController.cs" />
+    <Compile Include="Controllers\Competences_ProController.cs" />
     <Compile Include="Controllers\Experiences_ProController.cs" />
+    <Compile Include="Controllers\FormationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LanguesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Poste_SouhaiteController.cs" />
+    <Compile Include="Controllers\Projet_RealiseController.cs" />
+    <Compile Include="Controllers\ReferencesController.cs" />
+    <Compile Include="CvthequewebDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CvthequewebDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804090950370_candidat.cs" />
-    <Compile Include="Migrations\201804090950370_candidat.Designer.cs">
-      <DependentUpon>201804090950370_candidat.cs</DependentUpon>
+    <Compile Include="Migrations\201805151109046_candidat.cs" />
+    <Compile Include="Migrations\201805151109046_candidat.Designer.cs">
+      <DependentUpon>201805151109046_candidat.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804090954036_exp.cs" />
-    <Compile Include="Migrations\201804090954036_exp.Designer.cs">
-      <DependentUpon>201804090954036_exp.cs</DependentUpon>
+    <Compile Include="Migrations\201805151111179_exp.cs" />
+    <Compile Include="Migrations\201805151111179_exp.Designer.cs">
+      <DependentUpon>201805151111179_exp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804090957416_formation.cs" />
-    <Compile Include="Migrations\201804090957416_formation.Designer.cs">
-      <DependentUpon>201804090957416_formation.cs</DependentUpon>
+    <Compile Include="Migrations\201805151118142_table.cs" />
+    <Compile Include="Migrations\201805151118142_table.Designer.cs">
+      <DependentUpon>201805151118142_table.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804091001565_certif.cs" />
-    <Compile Include="Migrations\201804091001565_certif.Designer.cs">
-      <DependentUpon>201804091001565_certif.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804091005395_competences.cs" />
-    <Compile Include="Migrations\201804091005395_competences.Designer.cs">
-      <DependentUpon>201804091005395_competences.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804091010240_pro_realis.cs" />
-    <Compile Include="Migrations\201804091010240_pro_realis.Designer.cs">
-      <DependentUpon>201804091010240_pro_realis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804091015048_langues.cs" />
-    <Compile Include="Migrations\201804091015048_langues.Designer.cs">
-      <DependentUpon>201804091015048_langues.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804091017375_interet.cs" />
-    <Compile Include="Migrations\201804091017375_interet.Designer.cs">
-      <DependentUpon>201804091017375_interet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804091022550_reference.cs" />
-    <Compile Include="Migrations\201804091022550_reference.Designer.cs">
-      <DependentUpon>201804091022550_reference.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804091027053_poste.cs" />
-    <Compile Include="Migrations\201804091027053_poste.Designer.cs">
-      <DependentUpon>201804091027053_poste.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804180909351_maj.cs" />
-    <Compile Include="Migrations\201804180909351_maj.Designer.cs">
-      <DependentUpon>201804180909351_maj.cs</DependentUpon>
+    <Compile Include="Migrations\201805151755376_update.cs" />
+    <Compile Include="Migrations\201805151755376_update.Designer.cs">
+      <DependentUpon>201805151755376_update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Candidat.cs" />
+    <Compile Include="Models\Candidatviewmodel.cs" />
     <Compile Include="Models\Centres_Interet.cs" />
     <Compile Include="Models\Certifications.cs" />
     <Compile Include="Models\Competences_Pro.cs" />
@@ -257,7 +265,6 @@
     <Compile Include="Models\Poste_Souhaite.cs" />
     <Compile Include="Models\Projet_Realise.cs" />
     <Compile Include="Models\References.cs" />
-    <Compile Include="Models\viewmodel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -502,6 +509,7 @@
     </Content>
     <Content Include="gulpfile.js" />
     <Content Include="nucleo-icons.html" />
+    <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="Scripts\addedit.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -645,6 +653,17 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="CvthequewebDataSet.xsc">
+      <DependentUpon>CvthequewebDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="CvthequewebDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CvthequewebDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="CvthequewebDataSet.xss">
+      <DependentUpon>CvthequewebDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\exp.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -714,18 +733,44 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Candidats\Create.cshtml" />
-    <Content Include="Views\Candidats\Delete.cshtml" />
-    <Content Include="Views\Candidats\Details.cshtml" />
-    <Content Include="Views\Candidats\Edit.cshtml" />
-    <Content Include="Views\Candidats\Index.cshtml" />
+    <Content Include="Views\Candidat\Index.cshtml" />
+    <Content Include="Views\Candidat\Add.cshtml" />
     <Content Include="Views\Experiences_Pro\Create.cshtml" />
     <Content Include="Views\Experiences_Pro\Delete.cshtml" />
     <Content Include="Views\Experiences_Pro\Details.cshtml" />
     <Content Include="Views\Experiences_Pro\Edit.cshtml" />
-    <Content Include="Views\Experiences_Pro\Index.cshtml" />
-    <Content Include="Views\Candidat\Index.cshtml" />
-    <Content Include="Views\Candidat\Add.cshtml" />
+    <Content Include="Views\Formations\Create.cshtml" />
+    <Content Include="Views\Formations\Delete.cshtml" />
+    <Content Include="Views\Formations\Details.cshtml" />
+    <Content Include="Views\Formations\Edit.cshtml" />
+    <Content Include="Views\Certifications\Create.cshtml" />
+    <Content Include="Views\Certifications\Delete.cshtml" />
+    <Content Include="Views\Certifications\Details.cshtml" />
+    <Content Include="Views\Certifications\Edit.cshtml" />
+    <Content Include="Views\Competences_Pro\Create.cshtml" />
+    <Content Include="Views\Competences_Pro\Delete.cshtml" />
+    <Content Include="Views\Competences_Pro\Details.cshtml" />
+    <Content Include="Views\Competences_Pro\Edit.cshtml" />
+    <Content Include="Views\Projet_Realise\Create.cshtml" />
+    <Content Include="Views\Projet_Realise\Delete.cshtml" />
+    <Content Include="Views\Projet_Realise\Details.cshtml" />
+    <Content Include="Views\Projet_Realise\Edit.cshtml" />
+    <Content Include="Views\Langues\Create.cshtml" />
+    <Content Include="Views\Langues\Delete.cshtml" />
+    <Content Include="Views\Langues\Details.cshtml" />
+    <Content Include="Views\Langues\Edit.cshtml" />
+    <Content Include="Views\Centres_Interet\Create.cshtml" />
+    <Content Include="Views\Centres_Interet\Delete.cshtml" />
+    <Content Include="Views\Centres_Interet\Details.cshtml" />
+    <Content Include="Views\Centres_Interet\Edit.cshtml" />
+    <Content Include="Views\References\Create.cshtml" />
+    <Content Include="Views\References\Delete.cshtml" />
+    <Content Include="Views\References\Details.cshtml" />
+    <Content Include="Views\References\Edit.cshtml" />
+    <Content Include="Views\Poste_Souhaite\Create.cshtml" />
+    <Content Include="Views\Poste_Souhaite\Delete.cshtml" />
+    <Content Include="Views\Poste_Souhaite\Details.cshtml" />
+    <Content Include="Views\Poste_Souhaite\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -742,39 +787,19 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804090950370_candidat.resx">
-      <DependentUpon>201804090950370_candidat.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805151109046_candidat.resx">
+      <DependentUpon>201805151109046_candidat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804090954036_exp.resx">
-      <DependentUpon>201804090954036_exp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805151111179_exp.resx">
+      <DependentUpon>201805151111179_exp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804090957416_formation.resx">
-      <DependentUpon>201804090957416_formation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805151118142_table.resx">
+      <DependentUpon>201805151118142_table.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804091001565_certif.resx">
-      <DependentUpon>201804091001565_certif.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805151755376_update.resx">
+      <DependentUpon>201805151755376_update.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804091005395_competences.resx">
-      <DependentUpon>201804091005395_competences.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804091010240_pro_realis.resx">
-      <DependentUpon>201804091010240_pro_realis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804091015048_langues.resx">
-      <DependentUpon>201804091015048_langues.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804091017375_interet.resx">
-      <DependentUpon>201804091017375_interet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804091022550_reference.resx">
-      <DependentUpon>201804091022550_reference.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804091027053_poste.resx">
-      <DependentUpon>201804091027053_poste.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804180909351_maj.resx">
-      <DependentUpon>201804180909351_maj.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Report1.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -809,12 +834,12 @@
     <PropertyGroup>
       <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.8.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.8.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.2.8.3\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.2.8.3\build\Microsoft.TypeScript.MSBuild.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.2.8.3\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.2.8.3\build\Microsoft.TypeScript.MSBuild.targets'))" />
   </Target>
-  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.2.8.1\build\Microsoft.TypeScript.MSBuild.targets')" />
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.2.8.3\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.2.8.3\build\Microsoft.TypeScript.MSBuild.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

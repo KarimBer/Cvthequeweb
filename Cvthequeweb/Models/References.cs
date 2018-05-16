@@ -17,5 +17,7 @@ namespace Cvthequeweb.Models
         [EmailAddress]
         public string Email { get; set; }
         public string Type { get; set; }
+        public string CandidatId { get; set; }
+        public virtual Candidat candidat { get; set; }
     }
 }

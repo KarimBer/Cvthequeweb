@@ -9,5 +9,7 @@ namespace Cvthequeweb.Models
     {
         public int Id { get; set; }
         public string Interet { get; set; }
+        public string CandidatId { get; set; }
+        public virtual Candidat candidat { get; set; }
     }
 }

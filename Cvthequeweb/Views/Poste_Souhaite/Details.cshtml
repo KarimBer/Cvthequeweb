@@ -1,0 +1,58 @@
+﻿@model Cvthequeweb.Models.Poste_Souhaite
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Poste_Souhaite</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titre_Poste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titre_Poste)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fourchette_salariale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fourchette_salariale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Secteur_Activite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Secteur_Activite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CandidatId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CandidatId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

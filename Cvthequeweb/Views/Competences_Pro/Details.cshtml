@@ -1,0 +1,34 @@
+﻿@model Cvthequeweb.Models.Competences_Pro
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Competences_Pro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Competences)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Competences)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CandidatId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CandidatId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,66 @@
+﻿@model Cvthequeweb.Models.Formations
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Formations</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Diplome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diplome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Specialite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specialite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Obtention)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Obtention)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Etablissement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Etablissement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Niveau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Niveau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Candidat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Candidat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

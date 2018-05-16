@@ -46,13 +46,15 @@ namespace Cvthequeweb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Date_Debut,Date_Fin,Nature,Type,Employeur,Secteur_Activite,Titre_Poste,Description,Duree,CandidatId")] Experiences_Pro experiences_Pro)
+        public ActionResult Create([Bind(Include = "Id,Date_Debut,Date_Fin,Nature,Type,Employeur,Secteur_Activite,Titre_Poste,Description,Duree,Id_Candidat")] Experiences_Pro experiences_Pro)
         {
+            var id = Session["IdCandidat"];
             if (ModelState.IsValid)
             {
+                experiences_Pro.CandidatId = id.ToString();
                 db.experiences_pro.Add(experiences_Pro);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create","Formations");
             }
 
             return View(experiences_Pro);
@@ -78,7 +80,7 @@ namespace Cvthequeweb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Date_Debut,Date_Fin,Nature,Type,Employeur,Secteur_Activite,Titre_Poste,Description,Duree,CandidatId")] Experiences_Pro experiences_Pro)
+        public ActionResult Edit([Bind(Include = "Id,Date_Debut,Date_Fin,Nature,Type,Employeur,Secteur_Activite,Titre_Poste,Description,Duree,Id_Candidat")] Experiences_Pro experiences_Pro)
         {
             if (ModelState.IsValid)
             {
@@ -113,6 +115,26 @@ namespace Cvthequeweb.Controllers
             db.experiences_pro.Remove(experiences_Pro);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Plus(Experiences_Pro experiences_Pro,DateTime Date_Debut,DateTime Date_Fin, 
+            string Nature, string Type, string Employeur, string Secteur_Activite,
+            string Titre_Poste, string Description, int Duree)
+        {
+            var id = Session["IdCandidat"];
+                experiences_Pro.Date_Debut = DateTime.Today;
+                experiences_Pro.Date_Fin = DateTime.Today;
+                experiences_Pro.Nature = Nature;
+                experiences_Pro.Type = Type;
+                experiences_Pro.Employeur = Employeur;
+                experiences_Pro.Secteur_Activite = Secteur_Activite;
+                experiences_Pro.Titre_Poste = Titre_Poste;
+                experiences_Pro.Description = Description;
+                experiences_Pro.Duree = Duree;
+                experiences_Pro.CandidatId = id.ToString();
+                db.experiences_pro.Add(experiences_Pro);
+                db.SaveChanges();
+            return Json(0);
         }
 
         protected override void Dispose(bool disposing)

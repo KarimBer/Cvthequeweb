@@ -13,5 +13,7 @@ namespace Cvthequeweb.Models
         public DateTime Date_Obtention { get; set; }
         public string Etablissement { get; set; }
         public string Niveau { get; set; }
+        public string CandidatId { get; set; }
+        public virtual Candidat candidat { get; set; }
     }
 }

@@ -9,75 +9,54 @@ namespace Cvthequeweb.Controllers
 {
     public class CandidatController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Candidat
         public ActionResult Index()
         {
             var db = new Models.ApplicationDbContext();
-            List<Candidat> candidat = db.candidat.ToList();
-            return View(candidat);
+            List<Candidat> news = db.candidat.ToList();
+            return View(news);
         }
-
         public ActionResult Add()
         {
-            var vm = new viewmodel()
+            var viewmodel = new Candidatviewmodel()
             {
-                candidat= new Candidat(),
-                Centres_Interets=db.centres_interet.ToList(),
-                certificatiions=db.certifications.ToList(),
-                Competences_Pros=db.competences_pro.ToList(),
-                Experiences_Pros=db.experiences_pro.ToList(),
-                Formatiions=db.formations.ToList(),
-                Languees=db.langues.ToList(),
-                Postes_Souhaites=db.poste_souhaite.ToList(),
-                Projets_Realises=db.projets_realise.ToList(),
-                Referencees=db.references.ToList()
+                candidat = new Candidat()
             };
-            return View("Add", vm);
+            return View("Add", viewmodel);
         }
-
         [HttpPost]
-        public ActionResult Save(Candidat candidat,Centres_Interet centres_Interet,Certifications certifications, Competences_Pro competences_Pro,Experiences_Pro experiences_Pro,Formations formations,Langues langues,Poste_Souhaite poste_Souhaite,Projet_Realise projet_Realise,References references)
+        public ActionResult Save(Candidat candidat)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var vm = new viewmodel()
+                var viewmodel = new Candidatviewmodel()
                 {
-                    candidat = candidat,
-                    centres_Interet = centres_Interet,
-                    certifications = certifications,
-                    competences_Pro = competences_Pro,
-                    experiences_Pro = experiences_Pro,
-                    formations = formations,
-                    langues = langues,
-                    poste_Souhaite = poste_Souhaite,
-                    projet_Realise = projet_Realise,
-                    references = references
+                    candidat = candidat
                 };
-                return View("Add", vm);
+                return View("Add", viewmodel);
             }
             var db = new ApplicationDbContext();
-            if(candidat.Id==0)
+            if (candidat.Id == 0)
             {
                 db.candidat.Add(candidat);
-            }else
+            }
+            else
             {
                 var candidatdb = db.candidat.SingleOrDefault(u => u.Id == candidat.Id);
-                var experience_prodb = db.experiences_pro.SingleOrDefault(u => u.Id == candidat.experiences_Pro.Id);
                 if (candidatdb == null)
                 {
                     return HttpNotFound();
                 }
-                if(db.candidat.SingleOrDefault(u=>u.Id!=candidat.Id)!=null)
+                if (db.candidat.SingleOrDefault(u => u.Id != candidat.Id) != null)
                 {
-                    var vm = new viewmodel()
+                    var viewmodel = new Candidatviewmodel()
                     {
-                        candidat = new Candidat()
+                        candidat = new Candidat(),
                     };
-                    return View("Add", vm);
+                    return View("Add", viewmodel);
                 }
                 candidatdb.Nom = candidat.Nom;
-                candidatdb.Prenom = candidat.Prenom;
+                candidatdb.Prenom= candidat.Prenom;
                 candidatdb.Email = candidat.Email;
                 candidatdb.Tel = candidat.Tel;
                 candidatdb.Adresse = candidat.Adresse;
@@ -86,11 +65,10 @@ namespace Cvthequeweb.Controllers
                 candidatdb.Situation_Familiale = candidat.Situation_Familiale;
                 candidatdb.Ville = candidat.Ville;
                 candidatdb.CIN = candidat.CIN;
-
-                //exp.Date_Debut = ex
             }
             db.SaveChanges();
-            return RedirectToAction("Index");
+            Session["IdCandidat"] = candidat.Id;
+            return RedirectToAction("Create","Experiences_Pro");
         }
         public ActionResult update(int Id)
         {
@@ -100,11 +78,11 @@ namespace Cvthequeweb.Controllers
             {
                 return HttpNotFound();
             }
-            var vm = new viewmodel()
+            var viewmodel = new Candidatviewmodel()
             {
                 candidat = candidat
             };
-            return View("Add", vm);
+            return View("Add",viewmodel);
         }
         public ActionResult delete(int id)
         {
@@ -118,5 +96,23 @@ namespace Cvthequeweb.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //public ActionResult Plus(Candidat candidat)
+        //{
+        //    var db = new ApplicationDbContext();
+        //    candidat.Nom = "aa";
+        //    candidat.Prenom = "aaaa";
+        //    candidat.Email = "a@a.a";
+        //    candidat.Tel = "0607486054";
+        //    candidat.Adresse = "aaa";
+        //    candidat.Date_Naissance = DateTime.Today;
+        //    candidat.Genre = "aaa";
+        //    candidat.Situation_Familiale = "aaa";
+        //    candidat.Ville = "aaaaa";
+        //    candidat.CIN = "aaa";
+        //    db.candidat.Add(candidat);
+        //    db.SaveChanges();
+        //    return Json(0);
+        //}
     }
 }

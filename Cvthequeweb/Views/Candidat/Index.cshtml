@@ -1,9 +1,7 @@
 ﻿@model List<Cvthequeweb.Models.Candidat>
-
 @{
     ViewBag.Title = "Index";
 }
-
 
 <head>
     <meta charset="utf-8" />
@@ -35,16 +33,16 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li>
-                        <a href="../Candidat/Add">
-                            <i class="now-ui-icons users_single-02"></i>
-                            <p>Nouveau Candidat</p>
-                        </a>
-                    </li>
                     <li class="active">
                         <a href="../Candidat/Index">
                             <i class="now-ui-icons users_circle-08"></i>
                             <p>Liste des Candidats</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Candidat/Add">
+                            <i class="now-ui-icons users_single-02"></i>
+                            <p>Nouveau Candidat</p>
                         </a>
                     </li>
                 </ul>
@@ -115,16 +113,16 @@
                 </div>
             </nav>
             <div style="margin-top:100px; margin-left:15px;margin-right:15px;width:1000px;">
-                @Html.ActionLink("Exporter Vers Excel", "", "",new { @class="btn btn-primary" , @style="float:Right"})
+                @Html.ActionLink("Exporter Vers Excel", "", "", new { @class = "btn btn-primary", @style = "float:Right" })
                 <table id="tablecandidat" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Nom</th>
                             <th>Prénom</th>
-                            <th>Poste Souhaité</th>
-                            <th>Ville</th>
-                            <th>Genre</th>
                             <th>Tel</th>
+                            <th>Email</th>
+                            <th>Genre</th>
+                            <th>Ville</th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -134,17 +132,45 @@
 
                         @foreach (var m in Model)
                         {
-                        <tr>
-                            <td>@m.Nom</td>
-                            <td>@m.Prenom</td>
-                            <td>@m.poste_souhaite</td>
-                            <td>@m.Ville</td>
-                            <td>@m.Genre</td>
-                            <td>@m.Tel</td>
-                            <td>@Html.ActionLink("Afficher CV", "", "", new { @class = "btn btn-success" })</td>
-                            <td>@Html.ActionLink("Modifier", "", "", new { @class = "btn btn-warning" })</td>
-                            <td>@Html.ActionLink("Supprimer", "", "", new { @class = "btn btn-danger" })</td>
-                        </tr>
+                            <tr>
+                                <td>@m.Nom</td>
+                                <td>@m.Prenom</td>
+                                <td>@m.Tel</td>
+                                <td>@m.Email</td>
+                                <td>@m.Genre</td>
+                                <td>@m.Ville</td>
+                                <td>@Html.ActionLink("Afficher CV", "", "", new { id = m.Id }, new { @class = "btn btn-success" })</td>
+                                <td>@Html.ActionLink("Modifier", "update", "Candidat", new { id = m.Id }, new { @class = "btn btn-warning" })</td>
+                                <td>
+                                    @using (Html.BeginForm("Delete", "Candidat", new { id = m.Id }))
+                                    {
+                                        var myModal = "myModal" + m.Id;
+                                        <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#@myModal"
+                                                data-whatever="@m.Id">
+                                            Supprimer
+                                        </button>
+                                        <div class="modal fade" id="@myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">Supprimer Utilisateur</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Voulez-Vous vraiment Supprimer:
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -175,3 +201,4 @@
         $("#tablecandidat").DataTable();
     </script>
 }
+

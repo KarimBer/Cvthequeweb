@@ -17,5 +17,7 @@ namespace Cvthequeweb.Models
         public string Titre_Poste { get; set; }
         public string Description { get; set; }
         public int Duree { get; set; }
+        public string CandidatId { get; set; }
+        public virtual Candidat candidat { get; set; }
     }
 }

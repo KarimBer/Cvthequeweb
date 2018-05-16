@@ -1,0 +1,50 @@
+﻿@model Cvthequeweb.Models.Projet_Realise
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Projet_Realise</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Theme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Theme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Organisme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Organisme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CandidatId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CandidatId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
