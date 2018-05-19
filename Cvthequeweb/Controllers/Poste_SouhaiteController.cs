@@ -6,18 +6,19 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Cvthequeweb.Models;
+using Cvthequeweb;
 
 namespace Cvthequeweb.Controllers
 {
     public class Poste_SouhaiteController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private CVThequeEntities db = new CVThequeEntities();
 
         // GET: Poste_Souhaite
         public ActionResult Index()
         {
-            return View(db.poste_souhaite.ToList());
+            var poste_Souhaite = db.Poste_Souhaite.Include(p => p.Candidat);
+            return View(poste_Souhaite.ToList());
         }
 
         // GET: Poste_Souhaite/Details/5
@@ -27,7 +28,7 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Poste_Souhaite poste_Souhaite = db.poste_souhaite.Find(id);
+            Poste_Souhaite poste_Souhaite = db.Poste_Souhaite.Find(id);
             if (poste_Souhaite == null)
             {
                 return HttpNotFound();
@@ -38,6 +39,7 @@ namespace Cvthequeweb.Controllers
         // GET: Poste_Souhaite/Create
         public ActionResult Create()
         {
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom");
             return View();
         }
 
@@ -46,17 +48,18 @@ namespace Cvthequeweb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Titre_Poste,Fourchette_salariale,Secteur_Activite,Mobile,CandidatId")] Poste_Souhaite poste_Souhaite)
+        public ActionResult Create([Bind(Include = "Id,Titre_Poste,Fourchette_Salarial,Secteur_Activite,Mobile,Id_Candiat")] Poste_Souhaite poste_Souhaite)
         {
             var id = Session["IdCandidat"];
             if (ModelState.IsValid)
             {
-                poste_Souhaite.CandidatId = id.ToString();
-                db.poste_souhaite.Add(poste_Souhaite);
+                poste_Souhaite.Id_Candiat = int.Parse(id.ToString());
+                db.Poste_Souhaite.Add(poste_Souhaite);
                 db.SaveChanges();
-                return RedirectToAction("Index","Candidat");
+                return RedirectToAction("Index","Candidats");
             }
 
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", poste_Souhaite.Id_Candiat);
             return View(poste_Souhaite);
         }
 
@@ -67,11 +70,12 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Poste_Souhaite poste_Souhaite = db.poste_souhaite.Find(id);
+            Poste_Souhaite poste_Souhaite = db.Poste_Souhaite.Find(id);
             if (poste_Souhaite == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", poste_Souhaite.Id_Candiat);
             return View(poste_Souhaite);
         }
 
@@ -80,14 +84,15 @@ namespace Cvthequeweb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Titre_Poste,Fourchette_salariale,Secteur_Activite,Mobile,CandidatId")] Poste_Souhaite poste_Souhaite)
-        {      
+        public ActionResult Edit([Bind(Include = "Id,Titre_Poste,Fourchette_Salarial,Secteur_Activite,Mobile,Id_Candiat")] Poste_Souhaite poste_Souhaite)
+        {
             if (ModelState.IsValid)
             {
                 db.Entry(poste_Souhaite).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", poste_Souhaite.Id_Candiat);
             return View(poste_Souhaite);
         }
 
@@ -98,7 +103,7 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Poste_Souhaite poste_Souhaite = db.poste_souhaite.Find(id);
+            Poste_Souhaite poste_Souhaite = db.Poste_Souhaite.Find(id);
             if (poste_Souhaite == null)
             {
                 return HttpNotFound();
@@ -111,8 +116,8 @@ namespace Cvthequeweb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Poste_Souhaite poste_Souhaite = db.poste_souhaite.Find(id);
-            db.poste_souhaite.Remove(poste_Souhaite);
+            Poste_Souhaite poste_Souhaite = db.Poste_Souhaite.Find(id);
+            db.Poste_Souhaite.Remove(poste_Souhaite);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

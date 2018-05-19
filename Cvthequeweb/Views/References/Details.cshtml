@@ -1,4 +1,4 @@
-﻿@model Cvthequeweb.Models.References
+﻿@model Cvthequeweb.Reference
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>References</h4>
+    <h4>Reference</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -51,19 +51,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Type)
+            @Html.DisplayNameFor(model => model.typee)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Type)
+            @Html.DisplayFor(model => model.typee)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CandidatId)
+            @Html.DisplayNameFor(model => model.Candidat.Nom)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CandidatId)
+            @Html.DisplayFor(model => model.Candidat.Nom)
         </dd>
 
     </dl>

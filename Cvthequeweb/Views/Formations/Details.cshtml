@@ -1,4 +1,4 @@
-﻿@model Cvthequeweb.Models.Formations
+﻿@model Cvthequeweb.Formation
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Formations</h4>
+    <h4>Formation</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -51,11 +51,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Id_Candidat)
+            @Html.DisplayNameFor(model => model.Candidat.Nom)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Id_Candidat)
+            @Html.DisplayFor(model => model.Candidat.Nom)
         </dd>
 
     </dl>

@@ -1,10 +1,8 @@
-﻿@model Cvthequeweb.Models.References
+﻿@model Cvthequeweb.Reference
 
 @{
     ViewBag.Title = "Create";
 }
-
-<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
 
 <head>
     <meta charset="utf-8" />
@@ -36,67 +34,67 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons business_bank"></i>
                             <p>Liste des candidats</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Candidat</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Expériences Professionnelles</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Formations</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Certifications</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Compétences ProFessionnelles</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Projets Réalisé</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Langues</p>
                         </a>
                     </li>
-                    <li >
-                        <a >
+                    <li>
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Centres d'intérêts</p>
                         </a>
                     </li>
                     <li class="active">
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Réfèrences</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Poste Souhaité</p>
                         </a>
@@ -180,7 +178,7 @@
                                         <td>
                                             <div class="form-group col-md-8">
                                                 <label class="control-label">Nom</label>
-                                                @Html.TextBoxFor(Model=>Model.Nom, new { @class = "form-validate form-control col", placeholder = "Nom", required = "true" })
+                                                @Html.TextBoxFor(Model => Model.Nom, new { @class = "form-validate form-control col", placeholder = "Nom", required = "true" })
                                             </div>
                                             <div class="form-group col-md-8">
                                                 <label class="control-label">Titre</label>
@@ -202,7 +200,7 @@
                                             </div>
                                             <div class="form-group col-md-8">
                                                 <label class="control-label">Type</label>
-                                                @Html.DropDownListFor(Model => Model.Type, new SelectList(new List<Object> { new { value = 0, text = "Professionnelle" }, new { value = 1, text = "Personnelle" } }, "value", "text"), "Veuillez Selectionner", new { @class = "form-validate form-control col", required = "true" })
+                                                @Html.DropDownListFor(Model => Model.typee, new SelectList(new List<Object> { new { value = "Professionnelle", text = "Professionnelle" }, new { value = "Personnelle", text = "Personnelle" } }, "value", "text"), "Veuillez Selectionner", new { @class = "form-validate form-control col", required = "true" })
                                             </div>
                                         </td>
                                     </tr>

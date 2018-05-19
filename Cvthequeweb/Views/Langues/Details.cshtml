@@ -1,4 +1,4 @@
-﻿@model Cvthequeweb.Models.Langues
+﻿@model Cvthequeweb.Langue
 
 @{
     ViewBag.Title = "Details";
@@ -7,15 +7,15 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Langues</h4>
+    <h4>Langue</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Langue)
+            @Html.DisplayNameFor(model => model.Langue1)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Langue)
+            @Html.DisplayFor(model => model.Langue1)
         </dd>
 
         <dt>
@@ -27,11 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CandidatId)
+            @Html.DisplayNameFor(model => model.Candidat.Nom)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CandidatId)
+            @Html.DisplayFor(model => model.Candidat.Nom)
         </dd>
 
     </dl>

@@ -6,18 +6,19 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Cvthequeweb.Models;
+using Cvthequeweb;
 
 namespace Cvthequeweb.Controllers
 {
     public class CertificationsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private CVThequeEntities db = new CVThequeEntities();
 
         // GET: Certifications
         public ActionResult Index()
         {
-            return View(db.certifications.ToList());
+            var certifications = db.Certifications.Include(c => c.Candidat);
+            return View(certifications.ToList());
         }
 
         // GET: Certifications/Details/5
@@ -27,17 +28,18 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Certifications certifications = db.certifications.Find(id);
-            if (certifications == null)
+            Certification certification = db.Certifications.Find(id);
+            if (certification == null)
             {
                 return HttpNotFound();
             }
-            return View(certifications);
+            return View(certification);
         }
 
         // GET: Certifications/Create
         public ActionResult Create()
         {
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom");
             return View();
         }
 
@@ -46,18 +48,19 @@ namespace Cvthequeweb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nom_certif,Nom_Organisme,Date_Obtention,CandidatId")] Certifications certifications)
+        public ActionResult Create([Bind(Include = "Id,Nom_Certification,Nom_Organisme,Date_Obtention,Id_Candiat")] Certification certification)
         {
             var id = Session["IdCandidat"];
             if (ModelState.IsValid)
             {
-                certifications.CandidatId = id.ToString();
-                db.certifications.Add(certifications);
+                certification.Id_Candiat = int.Parse(id.ToString());
+                db.Certifications.Add(certification);
                 db.SaveChanges();
-                return RedirectToAction("Create","Competences_Pro");
+                return RedirectToAction("Create","Competences_Professionnelles");
             }
 
-            return View(certifications);
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", certification.Id_Candiat);
+            return View(certification);
         }
 
         // GET: Certifications/Edit/5
@@ -67,12 +70,13 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Certifications certifications = db.certifications.Find(id);
-            if (certifications == null)
+            Certification certification = db.Certifications.Find(id);
+            if (certification == null)
             {
                 return HttpNotFound();
             }
-            return View(certifications);
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", certification.Id_Candiat);
+            return View(certification);
         }
 
         // POST: Certifications/Edit/5
@@ -80,15 +84,16 @@ namespace Cvthequeweb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nom_certif,Nom_Organisme,Date_Obtention,CandidatId")] Certifications certifications)
+        public ActionResult Edit([Bind(Include = "Id,Nom_Certification,Nom_Organisme,Date_Obtention,Id_Candiat")] Certification certification)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(certifications).State = EntityState.Modified;
+                db.Entry(certification).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(certifications);
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", certification.Id_Candiat);
+            return View(certification);
         }
 
         // GET: Certifications/Delete/5
@@ -98,12 +103,12 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Certifications certifications = db.certifications.Find(id);
-            if (certifications == null)
+            Certification certification = db.Certifications.Find(id);
+            if (certification == null)
             {
                 return HttpNotFound();
             }
-            return View(certifications);
+            return View(certification);
         }
 
         // POST: Certifications/Delete/5
@@ -111,10 +116,23 @@ namespace Cvthequeweb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Certifications certifications = db.certifications.Find(id);
-            db.certifications.Remove(certifications);
+            Certification certification = db.Certifications.Find(id);
+            db.Certifications.Remove(certification);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Plus(Certification certification,
+            string nom_certif,string nom_organisme,DateTime date_obtention)
+        {
+            var id = Session["IdCandidat"];
+            certification.Nom_Certification = nom_certif;
+            certification.Nom_Organisme = nom_organisme;
+            certification.Date_Obtention = date_obtention.ToString();
+            certification.Id_Candiat = int.Parse(id.ToString());
+            db.Certifications.Add(certification);
+            db.SaveChanges();
+            return Json(0);
         }
 
         protected override void Dispose(bool disposing)

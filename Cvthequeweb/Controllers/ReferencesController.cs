@@ -6,18 +6,19 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Cvthequeweb.Models;
+using Cvthequeweb;
 
 namespace Cvthequeweb.Controllers
 {
     public class ReferencesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private CVThequeEntities db = new CVThequeEntities();
 
         // GET: References
         public ActionResult Index()
         {
-            return View(db.references.ToList());
+            var references = db.References.Include(r => r.Candidat);
+            return View(references.ToList());
         }
 
         // GET: References/Details/5
@@ -27,17 +28,18 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            References references = db.references.Find(id);
-            if (references == null)
+            Reference reference = db.References.Find(id);
+            if (reference == null)
             {
                 return HttpNotFound();
             }
-            return View(references);
+            return View(reference);
         }
 
         // GET: References/Create
         public ActionResult Create()
         {
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom");
             return View();
         }
 
@@ -46,18 +48,19 @@ namespace Cvthequeweb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nom,Titre,Entreprise,Telephone,Email,Type,CandidatId")] References references)
+        public ActionResult Create([Bind(Include = "Id,Nom,Titre,Entreprise,Telephone,Email,typee,Id_Candiat")] Reference reference)
         {
             var id = Session["IdCandidat"];
             if (ModelState.IsValid)
             {
-                references.CandidatId = id.ToString();
-                db.references.Add(references);
+                reference.Id_Candiat = int.Parse(id.ToString());
+                db.References.Add(reference);
                 db.SaveChanges();
                 return RedirectToAction("Create","Poste_Souhaite");
             }
 
-            return View(references);
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", reference.Id_Candiat);
+            return View(reference);
         }
 
         // GET: References/Edit/5
@@ -67,12 +70,13 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            References references = db.references.Find(id);
-            if (references == null)
+            Reference reference = db.References.Find(id);
+            if (reference == null)
             {
                 return HttpNotFound();
             }
-            return View(references);
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", reference.Id_Candiat);
+            return View(reference);
         }
 
         // POST: References/Edit/5
@@ -80,15 +84,16 @@ namespace Cvthequeweb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nom,Titre,Entreprise,Telephone,Email,Type,CandidatId")] References references)
+        public ActionResult Edit([Bind(Include = "Id,Nom,Titre,Entreprise,Telephone,Email,typee,Id_Candiat")] Reference reference)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(references).State = EntityState.Modified;
+                db.Entry(reference).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(references);
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", reference.Id_Candiat);
+            return View(reference);
         }
 
         // GET: References/Delete/5
@@ -98,12 +103,12 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            References references = db.references.Find(id);
-            if (references == null)
+            Reference reference = db.References.Find(id);
+            if (reference == null)
             {
                 return HttpNotFound();
             }
-            return View(references);
+            return View(reference);
         }
 
         // POST: References/Delete/5
@@ -111,8 +116,8 @@ namespace Cvthequeweb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            References references = db.references.Find(id);
-            db.references.Remove(references);
+            Reference reference = db.References.Find(id);
+            db.References.Remove(reference);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

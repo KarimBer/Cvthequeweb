@@ -1,10 +1,9 @@
-﻿@model Cvthequeweb.Models.Formations
+﻿@model Cvthequeweb.Formation
 
 @{
     ViewBag.Title = "Create";
 }
 
-<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
 
 <head>
     <meta charset="utf-8" />
@@ -36,67 +35,67 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons business_bank"></i>
                             <p>Liste des candidats</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Candidat</p>
                         </a>
                     </li>
-                    <li >
-                        <a >
+                    <li>
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Expériences Professionnelles</p>
                         </a>
                     </li>
                     <li class="active">
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Formations</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Certifications</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Compétences ProFessionnelles</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Projets Réalisé</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Langues</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Centres d'intérêts</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Réfèrences</p>
                         </a>
                     </li>
                     <li>
-                        <a >
+                        <a>
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Poste Souhaité</p>
                         </a>
@@ -180,30 +179,30 @@
                                         <td>
                                             <div class="form-group col-md-8">
                                                 <label class="control-label">Diplôme</label>
-                                                @Html.TextBoxFor(Model=>Model.Diplome, new { @class = "form-validate form-control col", placeholder = "Diplôme", required = "true" })
+                                                @Html.TextBoxFor(Model => Model.Diplome, new { @class = "form-validate form-control col", placeholder = "Diplôme", required = "true", id = "diplome" })
                                             </div>
                                             <div class="form-group col-md-8">
                                                 <label class="control-label">Spécialité</label>
-                                                @Html.TextBoxFor(Model => Model.Specialite, new { @class = "form-validate form-control col", placeholder = "Commerce", required = "true" })
+                                                @Html.TextBoxFor(Model => Model.Specialite, new { @class = "form-validate form-control col", placeholder = "Commerce", required = "true", id = "specialite" })
                                             </div>
                                             <div class="form-group col-md-8">
                                                 <label class="control-label">Date d'obtention</label>
-                                                @Html.TextBoxFor(Model => Model.Date_Obtention, new { @class = "form-validate form-control col", placeholder = "01/06/2018", required = "true" })
+                                                @Html.EditorFor(Model => Model.Date_Obtention, new { htmlAttributes = new { @class = "form-validate form-control col datepicker", placeholder = "01/06/2018", required = "true", id = "date" } })
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group col-md-8">
                                                 <label class="control-label">Etablissement</label>
-                                                @Html.TextBoxFor(Model => Model.Etablissement, new { @class = "form-validate form-control col", placeholder = "ISTA HAY HASSANI 1", required = "true" })
+                                                @Html.TextBoxFor(Model => Model.Etablissement, new { @class = "form-validate form-control col", placeholder = "ISTA HAY HASSANI 1", required = "true", id = "etablissement" })
                                             </div>
                                             <div class="form-group col-md-8">
                                                 <label class="control-label">Niveau</label>
-                                                @Html.DropDownListFor(Model => Model.Niveau, new SelectList(new List<Object> { new { value = 0, text = "TS" }, new { value = 1, text = "T" }, new { value = 2, text = "Formation Qualifiante" }, new { value = 3, text = "Autre" } }, "value", "text"), "Veuillez Selectionner", new { @class = "form-validate form-control col", required = "true" })
+                                                @Html.DropDownListFor(Model => Model.Niveau, new SelectList(new List<Object> { new { value = "TS", text = "TS" }, new { value = "T", text = "T" }, new { value = "Formation Qualifiante", text = "Formation Qualifiante" }, new { value = "Autre", text = "Autre" } }, "value", "text"), "Veuillez Selectionner", new { @class = "form-validate form-control col", required = "true", id = "niveau" })
                                             </div>
                                         </td>
                                     </tr>
                                 </table>
-                                <button class="btn btn-outline" type="submit" style="float:right">Plus </button>
+                                <button class="btn btn-outline" type="button" onclick="test()" style="float:right">Plus </button>
                                 <button class="btn btn-success" type="submit" style="float:right">Enregistrer</button>
                             </div>
                         </div>
@@ -228,8 +227,22 @@
     });
 </script>
 
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateformat: "dd-mm-yyyy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "2000:2018"
+            });
+
+        });
+    </script>
     <script src="~/Scripts/addedit.js"></script>
     <style>
 
@@ -268,4 +281,25 @@
             max-height: 60px;
         }
     </style>
+    <script>
+        var test = function () {
+            $.ajax({
+                url: "/Formations/Plus?diplome=" + $("#diplome").val() + "&specialite=" + $("#specialite").val()
+                    + "&date_obtention=" + $("#date").val()
+                    + "&etablissement=" + $("#etablissement").val()
+                    + "&niveau=" + $("#niveau").val(),
+                type: "POST",
+                error: function () {
+                    alert("Error")
+                },
+                success: function () {
+                    $("#diplome").val("");
+                    $("#specialite").val("");
+                    $("#date").val("");
+                    $("#etablissement").val("");
+                    $("#niveau").val("");
+                }
+            });
+        }
+    </script>
 }

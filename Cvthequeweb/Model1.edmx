@@ -1,0 +1,1116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CVThequeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Candidat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="100" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresse" Type="nvarchar" MaxLength="300" />
+          <Property Name="Ville" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date_Naissance" Type="date" />
+          <Property Name="Genre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Situation_Familiale" Type="nvarchar" MaxLength="50" />
+          <Property Name="CIN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="image" />
+          <Property Name="Reponse" Type="nvarchar" MaxLength="50" />
+          <Property Name="Entreprise" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Centre_Interet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Interet" Type="nvarchar" MaxLength="300" />
+          <Property Name="Id_Candiat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Certifications">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_Certification" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nom_Organisme" Type="nvarchar" MaxLength="250" />
+          <Property Name="Date_Obtention" Type="nvarchar" MaxLength="300" />
+          <Property Name="Id_Candiat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Competences_Professionnelles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Competence" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Id_Candiat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Experiences_Professionnelles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date_Debut" Type="nvarchar" MaxLength="300" />
+          <Property Name="Date_Fin" Type="nvarchar" MaxLength="300" />
+          <Property Name="Nature" Type="nvarchar" MaxLength="50" />
+          <Property Name="tyype" Type="nvarchar" MaxLength="50" />
+          <Property Name="Employeur" Type="nvarchar" MaxLength="50" />
+          <Property Name="Secteur_Activité" Type="nvarchar" MaxLength="250" />
+          <Property Name="Titre_Poste" Type="nvarchar" MaxLength="250" />
+          <Property Name="descriptiion" Type="nvarchar" MaxLength="500" />
+          <Property Name="Duree" Type="int" />
+          <Property Name="Id_Candiat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Formations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Diplome" Type="nvarchar" MaxLength="250" />
+          <Property Name="Specialite" Type="nvarchar" MaxLength="250" />
+          <Property Name="Date_Obtention" Type="nvarchar" MaxLength="300" />
+          <Property Name="Etablissement" Type="nvarchar" MaxLength="250" />
+          <Property Name="Niveau" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_Candiat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Jointure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fichier" Type="varbinary(max)" />
+          <Property Name="Id_Candiat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Langues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Langue" Type="nvarchar" MaxLength="50" />
+          <Property Name="Niveau" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_Candiat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Poste_Souhaite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titre_Poste" Type="nvarchar" MaxLength="100" />
+          <Property Name="Fourchette_Salarial" Type="float" />
+          <Property Name="Secteur_Activite" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_Candiat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projet_Realise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date_Projet" Type="nvarchar" MaxLength="300" />
+          <Property Name="Theme" Type="nvarchar" MaxLength="500" />
+          <Property Name="Organisme" Type="nvarchar" MaxLength="250" />
+          <Property Name="Id_Candiat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reference">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Titre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Entreprise" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="typee" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_Candiat" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Candidat_Centre_Interet">
+          <End Role="Candidat" Type="Self.Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Centre_Interet" Type="Self.Centre_Interet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Centre_Interet">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Certifications">
+          <End Role="Candidat" Type="Self.Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Certifications" Type="Self.Certifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Certifications">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Competences_Professionnelles">
+          <End Role="Candidat" Type="Self.Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Competences_Professionnelles" Type="Self.Competences_Professionnelles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Competences_Professionnelles">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Experiences_Professionnelles">
+          <End Role="Candidat" Type="Self.Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Experiences_Professionnelles" Type="Self.Experiences_Professionnelles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Experiences_Professionnelles">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Formations">
+          <End Role="Candidat" Type="Self.Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Formations" Type="Self.Formations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Formations">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Langues">
+          <End Role="Candidat" Type="Self.Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Langues" Type="Self.Langues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Langues">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Poste_Souhaite">
+          <End Role="Candidat" Type="Self.Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Poste_Souhaite" Type="Self.Poste_Souhaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Poste_Souhaite">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Projet_Realise">
+          <End Role="Candidat" Type="Self.Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Projet_Realise" Type="Self.Projet_Realise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Projet_Realise">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Reference">
+          <End Role="Candidat" Type="Self.Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reference" Type="Self.Reference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reference">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jointure_Candidat">
+          <End Role="Candidat" Type="Self.Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Jointure" Type="Self.Jointure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Jointure">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetCandidat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetCentresInteret" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetCertification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetCompetences" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetExperiences" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetFormation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetJointure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetLangue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetPoste" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProjet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetReferences" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="CVThequeModelStoreContainer">
+          <EntitySet Name="Candidat" EntityType="Self.Candidat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Centre_Interet" EntityType="Self.Centre_Interet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Certifications" EntityType="Self.Certifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Competences_Professionnelles" EntityType="Self.Competences_Professionnelles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Experiences_Professionnelles" EntityType="Self.Experiences_Professionnelles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Formations" EntityType="Self.Formations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jointure" EntityType="Self.Jointure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Langues" EntityType="Self.Langues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poste_Souhaite" EntityType="Self.Poste_Souhaite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projet_Realise" EntityType="Self.Projet_Realise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reference" EntityType="Self.Reference" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Candidat_Centre_Interet" Association="Self.FK_Candidat_Centre_Interet">
+            <End Role="Candidat" EntitySet="Candidat" />
+            <End Role="Centre_Interet" EntitySet="Centre_Interet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Certifications" Association="Self.FK_Candidat_Certifications">
+            <End Role="Candidat" EntitySet="Candidat" />
+            <End Role="Certifications" EntitySet="Certifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Competences_Professionnelles" Association="Self.FK_Candidat_Competences_Professionnelles">
+            <End Role="Candidat" EntitySet="Candidat" />
+            <End Role="Competences_Professionnelles" EntitySet="Competences_Professionnelles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Experiences_Professionnelles" Association="Self.FK_Candidat_Experiences_Professionnelles">
+            <End Role="Candidat" EntitySet="Candidat" />
+            <End Role="Experiences_Professionnelles" EntitySet="Experiences_Professionnelles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Formations" Association="Self.FK_Candidat_Formations">
+            <End Role="Candidat" EntitySet="Candidat" />
+            <End Role="Formations" EntitySet="Formations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Langues" Association="Self.FK_Candidat_Langues">
+            <End Role="Candidat" EntitySet="Candidat" />
+            <End Role="Langues" EntitySet="Langues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Poste_Souhaite" Association="Self.FK_Candidat_Poste_Souhaite">
+            <End Role="Candidat" EntitySet="Candidat" />
+            <End Role="Poste_Souhaite" EntitySet="Poste_Souhaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Projet_Realise" Association="Self.FK_Candidat_Projet_Realise">
+            <End Role="Candidat" EntitySet="Candidat" />
+            <End Role="Projet_Realise" EntitySet="Projet_Realise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Reference" Association="Self.FK_Candidat_Reference">
+            <End Role="Candidat" EntitySet="Candidat" />
+            <End Role="Reference" EntitySet="Reference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jointure_Candidat" Association="Self.FK_Jointure_Candidat">
+            <End Role="Candidat" EntitySet="Candidat" />
+            <End Role="Jointure" EntitySet="Jointure" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CVThequeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CVThequeEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="GetCandidat" ReturnType="Collection(CVThequeModel.GetCandidat_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetCentresInteret" ReturnType="Collection(CVThequeModel.GetCentresInteret_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetCertification" ReturnType="Collection(CVThequeModel.GetCertification_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetCompetences" ReturnType="Collection(CVThequeModel.GetCompetences_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetExperiences" ReturnType="Collection(CVThequeModel.GetExperiences_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetFormation" ReturnType="Collection(CVThequeModel.GetFormation_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetJointure" ReturnType="Collection(CVThequeModel.GetJointure_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetLangue" ReturnType="Collection(CVThequeModel.GetLangue_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetPoste" ReturnType="Collection(CVThequeModel.GetPoste_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProjet" ReturnType="Collection(CVThequeModel.GetProjet_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetReferences" ReturnType="Collection(CVThequeModel.GetReferences_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Candidats" EntityType="CVThequeModel.Candidat" />
+          <EntitySet Name="Centre_Interet" EntityType="CVThequeModel.Centre_Interet" />
+          <EntitySet Name="Certifications" EntityType="CVThequeModel.Certification" />
+          <EntitySet Name="Competences_Professionnelles" EntityType="CVThequeModel.Competences_Professionnelles" />
+          <EntitySet Name="Experiences_Professionnelles" EntityType="CVThequeModel.Experiences_Professionnelles" />
+          <EntitySet Name="Formations" EntityType="CVThequeModel.Formation" />
+          <EntitySet Name="Jointures" EntityType="CVThequeModel.Jointure" />
+          <EntitySet Name="Langues" EntityType="CVThequeModel.Langue" />
+          <EntitySet Name="Poste_Souhaite" EntityType="CVThequeModel.Poste_Souhaite" />
+          <EntitySet Name="Projet_Realise" EntityType="CVThequeModel.Projet_Realise" />
+          <EntitySet Name="References" EntityType="CVThequeModel.Reference" />
+          <AssociationSet Name="FK_Candidat_Centre_Interet" Association="CVThequeModel.FK_Candidat_Centre_Interet">
+            <End Role="Candidat" EntitySet="Candidats" />
+            <End Role="Centre_Interet" EntitySet="Centre_Interet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Certifications" Association="CVThequeModel.FK_Candidat_Certifications">
+            <End Role="Candidat" EntitySet="Candidats" />
+            <End Role="Certification" EntitySet="Certifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Competences_Professionnelles" Association="CVThequeModel.FK_Candidat_Competences_Professionnelles">
+            <End Role="Candidat" EntitySet="Candidats" />
+            <End Role="Competences_Professionnelles" EntitySet="Competences_Professionnelles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Experiences_Professionnelles" Association="CVThequeModel.FK_Candidat_Experiences_Professionnelles">
+            <End Role="Candidat" EntitySet="Candidats" />
+            <End Role="Experiences_Professionnelles" EntitySet="Experiences_Professionnelles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Formations" Association="CVThequeModel.FK_Candidat_Formations">
+            <End Role="Candidat" EntitySet="Candidats" />
+            <End Role="Formation" EntitySet="Formations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Langues" Association="CVThequeModel.FK_Candidat_Langues">
+            <End Role="Candidat" EntitySet="Candidats" />
+            <End Role="Langue" EntitySet="Langues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Poste_Souhaite" Association="CVThequeModel.FK_Candidat_Poste_Souhaite">
+            <End Role="Candidat" EntitySet="Candidats" />
+            <End Role="Poste_Souhaite" EntitySet="Poste_Souhaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Projet_Realise" Association="CVThequeModel.FK_Candidat_Projet_Realise">
+            <End Role="Candidat" EntitySet="Candidats" />
+            <End Role="Projet_Realise" EntitySet="Projet_Realise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidat_Reference" Association="CVThequeModel.FK_Candidat_Reference">
+            <End Role="Candidat" EntitySet="Candidats" />
+            <End Role="Reference" EntitySet="References" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jointure_Candidat" Association="CVThequeModel.FK_Jointure_Candidat">
+            <End Role="Candidat" EntitySet="Candidats" />
+            <End Role="Jointure" EntitySet="Jointures" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="GetCandidat_Result">
+          <Property Type="Int32" Name="Age" Nullable="true" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Ville" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Prenom" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Tel" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Genre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Situation_Familiale" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CIN" Nullable="true" MaxLength="50" />
+          <Property Type="Binary" Name="Photo" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="GetCentresInteret_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Interet" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="Id_Candiat" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetCertification_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Nom_Certification" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nom_Organisme" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Date_Obtention" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="Id_Candiat" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetCompetences_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Competence" Nullable="true" MaxLength="1000" />
+          <Property Type="Int32" Name="Id_Candiat" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetExperiences_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Date_Debut" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Date_Fin" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Nature" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="tyype" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Employeur" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Secteur_Activité" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Titre_Poste" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="descriptiion" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="Duree" Nullable="true" />
+          <Property Type="Int32" Name="Id_Candiat" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetFormation_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Diplome" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Specialite" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Date_Obtention" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Etablissement" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Niveau" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Candiat" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetJointure_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Binary" Name="Fichier" Nullable="true" />
+          <Property Type="Int32" Name="Id_Candiat" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetLangue_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Langue" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Niveau" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Candiat" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetPoste_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Titre_Poste" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="Fourchette_Salarial" Nullable="true" />
+          <Property Type="String" Name="Secteur_Activite" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Candiat" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetProjet_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Date_Projet" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Theme" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Organisme" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Id_Candiat" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetReferences_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Titre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Entreprise" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Telephone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="typee" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Candiat" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Candidat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresse" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Naissance" Type="DateTime" Precision="0" />
+          <Property Name="Genre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Situation_Familiale" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CIN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Reponse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Entreprise" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Centre_Interet" Relationship="CVThequeModel.FK_Candidat_Centre_Interet" FromRole="Candidat" ToRole="Centre_Interet" />
+          <NavigationProperty Name="Certifications" Relationship="CVThequeModel.FK_Candidat_Certifications" FromRole="Candidat" ToRole="Certification" />
+          <NavigationProperty Name="Competences_Professionnelles" Relationship="CVThequeModel.FK_Candidat_Competences_Professionnelles" FromRole="Candidat" ToRole="Competences_Professionnelles" />
+          <NavigationProperty Name="Experiences_Professionnelles" Relationship="CVThequeModel.FK_Candidat_Experiences_Professionnelles" FromRole="Candidat" ToRole="Experiences_Professionnelles" />
+          <NavigationProperty Name="Formations" Relationship="CVThequeModel.FK_Candidat_Formations" FromRole="Candidat" ToRole="Formation" />
+          <NavigationProperty Name="Langues" Relationship="CVThequeModel.FK_Candidat_Langues" FromRole="Candidat" ToRole="Langue" />
+          <NavigationProperty Name="Poste_Souhaite" Relationship="CVThequeModel.FK_Candidat_Poste_Souhaite" FromRole="Candidat" ToRole="Poste_Souhaite" />
+          <NavigationProperty Name="Projet_Realise" Relationship="CVThequeModel.FK_Candidat_Projet_Realise" FromRole="Candidat" ToRole="Projet_Realise" />
+          <NavigationProperty Name="References" Relationship="CVThequeModel.FK_Candidat_Reference" FromRole="Candidat" ToRole="Reference" />
+          <NavigationProperty Name="Jointures" Relationship="CVThequeModel.FK_Jointure_Candidat" FromRole="Candidat" ToRole="Jointure" />
+        </EntityType>
+        <EntityType Name="Centre_Interet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Interet" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Candiat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Candidat" Relationship="CVThequeModel.FK_Candidat_Centre_Interet" FromRole="Centre_Interet" ToRole="Candidat" />
+        </EntityType>
+        <EntityType Name="Certification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_Certification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nom_Organisme" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Obtention" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Candiat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Candidat" Relationship="CVThequeModel.FK_Candidat_Certifications" FromRole="Certification" ToRole="Candidat" />
+        </EntityType>
+        <EntityType Name="Competences_Professionnelles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Competence" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Candiat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Candidat" Relationship="CVThequeModel.FK_Candidat_Competences_Professionnelles" FromRole="Competences_Professionnelles" ToRole="Candidat" />
+        </EntityType>
+        <EntityType Name="Experiences_Professionnelles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date_Debut" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Fin" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Nature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tyype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Employeur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Secteur_Activité" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Titre_Poste" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="descriptiion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Duree" Type="Int32" />
+          <Property Name="Id_Candiat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Candidat" Relationship="CVThequeModel.FK_Candidat_Experiences_Professionnelles" FromRole="Experiences_Professionnelles" ToRole="Candidat" />
+        </EntityType>
+        <EntityType Name="Formation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Diplome" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Specialite" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Obtention" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Etablissement" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Niveau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Candiat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Candidat" Relationship="CVThequeModel.FK_Candidat_Formations" FromRole="Formation" ToRole="Candidat" />
+        </EntityType>
+        <EntityType Name="Jointure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fichier" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Id_Candiat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Candidat" Relationship="CVThequeModel.FK_Jointure_Candidat" FromRole="Jointure" ToRole="Candidat" />
+        </EntityType>
+        <EntityType Name="Langue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Langue1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Niveau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Candiat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Candidat" Relationship="CVThequeModel.FK_Candidat_Langues" FromRole="Langue" ToRole="Candidat" />
+        </EntityType>
+        <EntityType Name="Poste_Souhaite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre_Poste" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Fourchette_Salarial" Type="Double" />
+          <Property Name="Secteur_Activite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Candiat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Candidat" Relationship="CVThequeModel.FK_Candidat_Poste_Souhaite" FromRole="Poste_Souhaite" ToRole="Candidat" />
+        </EntityType>
+        <EntityType Name="Projet_Realise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date_Projet" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Theme" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Organisme" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Candiat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Candidat" Relationship="CVThequeModel.FK_Candidat_Projet_Realise" FromRole="Projet_Realise" ToRole="Candidat" />
+        </EntityType>
+        <EntityType Name="Reference">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Titre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Entreprise" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="typee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Candiat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Candidat" Relationship="CVThequeModel.FK_Candidat_Reference" FromRole="Reference" ToRole="Candidat" />
+        </EntityType>
+        <Association Name="FK_Candidat_Centre_Interet">
+          <End Type="CVThequeModel.Candidat" Role="Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CVThequeModel.Centre_Interet" Role="Centre_Interet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Centre_Interet">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Certifications">
+          <End Type="CVThequeModel.Candidat" Role="Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CVThequeModel.Certification" Role="Certification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Certification">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Competences_Professionnelles">
+          <End Type="CVThequeModel.Candidat" Role="Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CVThequeModel.Competences_Professionnelles" Role="Competences_Professionnelles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Competences_Professionnelles">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Experiences_Professionnelles">
+          <End Type="CVThequeModel.Candidat" Role="Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CVThequeModel.Experiences_Professionnelles" Role="Experiences_Professionnelles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Experiences_Professionnelles">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Formations">
+          <End Type="CVThequeModel.Candidat" Role="Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CVThequeModel.Formation" Role="Formation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Formation">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Langues">
+          <End Type="CVThequeModel.Candidat" Role="Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CVThequeModel.Langue" Role="Langue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Langue">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Poste_Souhaite">
+          <End Type="CVThequeModel.Candidat" Role="Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CVThequeModel.Poste_Souhaite" Role="Poste_Souhaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Poste_Souhaite">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Projet_Realise">
+          <End Type="CVThequeModel.Candidat" Role="Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CVThequeModel.Projet_Realise" Role="Projet_Realise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Projet_Realise">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidat_Reference">
+          <End Type="CVThequeModel.Candidat" Role="Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CVThequeModel.Reference" Role="Reference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reference">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jointure_Candidat">
+          <End Type="CVThequeModel.Candidat" Role="Candidat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CVThequeModel.Jointure" Role="Jointure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Jointure">
+              <PropertyRef Name="Id_Candiat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CVThequeModelStoreContainer" CdmEntityContainer="CVThequeEntities">
+          <FunctionImportMapping FunctionImportName="GetCandidat" FunctionName="CVThequeModel.Store.GetCandidat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CVThequeModel.GetCandidat_Result">
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Situation_Familiale" ColumnName="Situation_Familiale" />
+                <ScalarProperty Name="CIN" ColumnName="CIN" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCentresInteret" FunctionName="CVThequeModel.Store.GetCentresInteret">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CVThequeModel.GetCentresInteret_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Interet" ColumnName="Interet" />
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCertification" FunctionName="CVThequeModel.Store.GetCertification">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CVThequeModel.GetCertification_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nom_Certification" ColumnName="Nom_Certification" />
+                <ScalarProperty Name="Nom_Organisme" ColumnName="Nom_Organisme" />
+                <ScalarProperty Name="Date_Obtention" ColumnName="Date_Obtention" />
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCompetences" FunctionName="CVThequeModel.Store.GetCompetences">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CVThequeModel.GetCompetences_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Competence" ColumnName="Competence" />
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetExperiences" FunctionName="CVThequeModel.Store.GetExperiences">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CVThequeModel.GetExperiences_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date_Debut" ColumnName="Date_Debut" />
+                <ScalarProperty Name="Date_Fin" ColumnName="Date_Fin" />
+                <ScalarProperty Name="Nature" ColumnName="Nature" />
+                <ScalarProperty Name="tyype" ColumnName="tyype" />
+                <ScalarProperty Name="Employeur" ColumnName="Employeur" />
+                <ScalarProperty Name="Secteur_Activité" ColumnName="Secteur_Activité" />
+                <ScalarProperty Name="Titre_Poste" ColumnName="Titre_Poste" />
+                <ScalarProperty Name="descriptiion" ColumnName="descriptiion" />
+                <ScalarProperty Name="Duree" ColumnName="Duree" />
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetFormation" FunctionName="CVThequeModel.Store.GetFormation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CVThequeModel.GetFormation_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Diplome" ColumnName="Diplome" />
+                <ScalarProperty Name="Specialite" ColumnName="Specialite" />
+                <ScalarProperty Name="Date_Obtention" ColumnName="Date_Obtention" />
+                <ScalarProperty Name="Etablissement" ColumnName="Etablissement" />
+                <ScalarProperty Name="Niveau" ColumnName="Niveau" />
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetJointure" FunctionName="CVThequeModel.Store.GetJointure">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CVThequeModel.GetJointure_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fichier" ColumnName="Fichier" />
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetLangue" FunctionName="CVThequeModel.Store.GetLangue">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CVThequeModel.GetLangue_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Langue" ColumnName="Langue" />
+                <ScalarProperty Name="Niveau" ColumnName="Niveau" />
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPoste" FunctionName="CVThequeModel.Store.GetPoste">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CVThequeModel.GetPoste_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Titre_Poste" ColumnName="Titre_Poste" />
+                <ScalarProperty Name="Fourchette_Salarial" ColumnName="Fourchette_Salarial" />
+                <ScalarProperty Name="Secteur_Activite" ColumnName="Secteur_Activite" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProjet" FunctionName="CVThequeModel.Store.GetProjet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CVThequeModel.GetProjet_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date_Projet" ColumnName="Date_Projet" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="Organisme" ColumnName="Organisme" />
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetReferences" FunctionName="CVThequeModel.Store.GetReferences">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CVThequeModel.GetReferences_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
+                <ScalarProperty Name="Entreprise" ColumnName="Entreprise" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="typee" ColumnName="typee" />
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Candidats">
+            <EntityTypeMapping TypeName="CVThequeModel.Candidat">
+              <MappingFragment StoreEntitySet="Candidat">
+                <ScalarProperty Name="Entreprise" ColumnName="Entreprise" />
+                <ScalarProperty Name="Reponse" ColumnName="Reponse" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="CIN" ColumnName="CIN" />
+                <ScalarProperty Name="Situation_Familiale" ColumnName="Situation_Familiale" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Date_Naissance" ColumnName="Date_Naissance" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Centre_Interet">
+            <EntityTypeMapping TypeName="CVThequeModel.Centre_Interet">
+              <MappingFragment StoreEntitySet="Centre_Interet">
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+                <ScalarProperty Name="Interet" ColumnName="Interet" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Certifications">
+            <EntityTypeMapping TypeName="CVThequeModel.Certification">
+              <MappingFragment StoreEntitySet="Certifications">
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+                <ScalarProperty Name="Date_Obtention" ColumnName="Date_Obtention" />
+                <ScalarProperty Name="Nom_Organisme" ColumnName="Nom_Organisme" />
+                <ScalarProperty Name="Nom_Certification" ColumnName="Nom_Certification" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competences_Professionnelles">
+            <EntityTypeMapping TypeName="CVThequeModel.Competences_Professionnelles">
+              <MappingFragment StoreEntitySet="Competences_Professionnelles">
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+                <ScalarProperty Name="Competence" ColumnName="Competence" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Experiences_Professionnelles">
+            <EntityTypeMapping TypeName="CVThequeModel.Experiences_Professionnelles">
+              <MappingFragment StoreEntitySet="Experiences_Professionnelles">
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+                <ScalarProperty Name="Duree" ColumnName="Duree" />
+                <ScalarProperty Name="descriptiion" ColumnName="descriptiion" />
+                <ScalarProperty Name="Titre_Poste" ColumnName="Titre_Poste" />
+                <ScalarProperty Name="Secteur_Activité" ColumnName="Secteur_Activité" />
+                <ScalarProperty Name="Employeur" ColumnName="Employeur" />
+                <ScalarProperty Name="tyype" ColumnName="tyype" />
+                <ScalarProperty Name="Nature" ColumnName="Nature" />
+                <ScalarProperty Name="Date_Fin" ColumnName="Date_Fin" />
+                <ScalarProperty Name="Date_Debut" ColumnName="Date_Debut" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Formations">
+            <EntityTypeMapping TypeName="CVThequeModel.Formation">
+              <MappingFragment StoreEntitySet="Formations">
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+                <ScalarProperty Name="Niveau" ColumnName="Niveau" />
+                <ScalarProperty Name="Etablissement" ColumnName="Etablissement" />
+                <ScalarProperty Name="Date_Obtention" ColumnName="Date_Obtention" />
+                <ScalarProperty Name="Specialite" ColumnName="Specialite" />
+                <ScalarProperty Name="Diplome" ColumnName="Diplome" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jointures">
+            <EntityTypeMapping TypeName="CVThequeModel.Jointure">
+              <MappingFragment StoreEntitySet="Jointure">
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+                <ScalarProperty Name="Fichier" ColumnName="Fichier" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Langues">
+            <EntityTypeMapping TypeName="CVThequeModel.Langue">
+              <MappingFragment StoreEntitySet="Langues">
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+                <ScalarProperty Name="Niveau" ColumnName="Niveau" />
+                <ScalarProperty Name="Langue1" ColumnName="Langue" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Poste_Souhaite">
+            <EntityTypeMapping TypeName="CVThequeModel.Poste_Souhaite">
+              <MappingFragment StoreEntitySet="Poste_Souhaite">
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Secteur_Activite" ColumnName="Secteur_Activite" />
+                <ScalarProperty Name="Fourchette_Salarial" ColumnName="Fourchette_Salarial" />
+                <ScalarProperty Name="Titre_Poste" ColumnName="Titre_Poste" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projet_Realise">
+            <EntityTypeMapping TypeName="CVThequeModel.Projet_Realise">
+              <MappingFragment StoreEntitySet="Projet_Realise">
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+                <ScalarProperty Name="Organisme" ColumnName="Organisme" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="Date_Projet" ColumnName="Date_Projet" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="References">
+            <EntityTypeMapping TypeName="CVThequeModel.Reference">
+              <MappingFragment StoreEntitySet="Reference">
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+                <ScalarProperty Name="typee" ColumnName="typee" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Entreprise" ColumnName="Entreprise" />
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

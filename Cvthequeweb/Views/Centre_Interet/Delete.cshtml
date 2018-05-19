@@ -1,0 +1,40 @@
+﻿@model Cvthequeweb.Centre_Interet
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Centre_Interet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Interet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Candidat.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Candidat.Nom)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

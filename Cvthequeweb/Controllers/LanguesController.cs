@@ -6,18 +6,19 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Cvthequeweb.Models;
+using Cvthequeweb;
 
 namespace Cvthequeweb.Controllers
 {
     public class LanguesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private CVThequeEntities db = new CVThequeEntities();
 
         // GET: Langues
         public ActionResult Index()
         {
-            return View(db.langues.ToList());
+            var langues = db.Langues.Include(l => l.Candidat);
+            return View(langues.ToList());
         }
 
         // GET: Langues/Details/5
@@ -27,17 +28,18 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Langues langues = db.langues.Find(id);
-            if (langues == null)
+            Langue langue = db.Langues.Find(id);
+            if (langue == null)
             {
                 return HttpNotFound();
             }
-            return View(langues);
+            return View(langue);
         }
 
         // GET: Langues/Create
         public ActionResult Create()
         {
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom");
             return View();
         }
 
@@ -46,18 +48,19 @@ namespace Cvthequeweb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Langue,Niveau,CandidatId")] Langues langues)
+        public ActionResult Create([Bind(Include = "Id,Langue1,Niveau,Id_Candiat")] Langue langue)
         {
             var id = Session["IdCandidat"];
             if (ModelState.IsValid)
             {
-                langues.CandidatId = id.ToString();
-                db.langues.Add(langues);
+                langue.Id_Candiat = int.Parse(id.ToString());
+                db.Langues.Add(langue);
                 db.SaveChanges();
-                return RedirectToAction("Create","Centres_Interet");
+                return RedirectToAction("Create","Centre_Interet");
             }
 
-            return View(langues);
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", langue.Id_Candiat);
+            return View(langue);
         }
 
         // GET: Langues/Edit/5
@@ -67,12 +70,13 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Langues langues = db.langues.Find(id);
-            if (langues == null)
+            Langue langue = db.Langues.Find(id);
+            if (langue == null)
             {
                 return HttpNotFound();
             }
-            return View(langues);
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", langue.Id_Candiat);
+            return View(langue);
         }
 
         // POST: Langues/Edit/5
@@ -80,15 +84,16 @@ namespace Cvthequeweb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Langue,Niveau,CandidatId")] Langues langues)
+        public ActionResult Edit([Bind(Include = "Id,Langue1,Niveau,Id_Candiat")] Langue langue)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(langues).State = EntityState.Modified;
+                db.Entry(langue).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(langues);
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", langue.Id_Candiat);
+            return View(langue);
         }
 
         // GET: Langues/Delete/5
@@ -98,12 +103,12 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Langues langues = db.langues.Find(id);
-            if (langues == null)
+            Langue langue = db.Langues.Find(id);
+            if (langue == null)
             {
                 return HttpNotFound();
             }
-            return View(langues);
+            return View(langue);
         }
 
         // POST: Langues/Delete/5
@@ -111,10 +116,21 @@ namespace Cvthequeweb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Langues langues = db.langues.Find(id);
-            db.langues.Remove(langues);
+            Langue langue = db.Langues.Find(id);
+            db.Langues.Remove(langue);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Plus(Langue langue,string Languee,string niveau)
+        {
+            var id = Session["IdCandidat"];
+            langue.Langue1 = Languee;
+            langue.Niveau = niveau;
+            langue.Id_Candiat = int.Parse(id.ToString());
+            db.Langues.Add(langue);
+            db.SaveChanges();
+            return Json(0);
         }
 
         protected override void Dispose(bool disposing)

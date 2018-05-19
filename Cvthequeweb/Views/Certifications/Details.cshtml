@@ -1,4 +1,4 @@
-﻿@model Cvthequeweb.Models.Certifications
+﻿@model Cvthequeweb.Certification
 
 @{
     ViewBag.Title = "Details";
@@ -7,15 +7,15 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Certifications</h4>
+    <h4>Certification</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Nom_certif)
+            @Html.DisplayNameFor(model => model.Nom_Certification)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nom_certif)
+            @Html.DisplayFor(model => model.Nom_Certification)
         </dd>
 
         <dt>
@@ -35,11 +35,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CandidatId)
+            @Html.DisplayNameFor(model => model.Candidat.Nom)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CandidatId)
+            @Html.DisplayFor(model => model.Candidat.Nom)
         </dd>
 
     </dl>

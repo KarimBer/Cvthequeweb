@@ -6,18 +6,19 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Cvthequeweb.Models;
+using Cvthequeweb;
 
 namespace Cvthequeweb.Controllers
 {
     public class Projet_RealiseController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private CVThequeEntities db = new CVThequeEntities();
 
         // GET: Projet_Realise
         public ActionResult Index()
         {
-            return View(db.projets_realise.ToList());
+            var projet_Realise = db.Projet_Realise.Include(p => p.Candidat);
+            return View(projet_Realise.ToList());
         }
 
         // GET: Projet_Realise/Details/5
@@ -27,7 +28,7 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Projet_Realise projet_Realise = db.projets_realise.Find(id);
+            Projet_Realise projet_Realise = db.Projet_Realise.Find(id);
             if (projet_Realise == null)
             {
                 return HttpNotFound();
@@ -38,6 +39,7 @@ namespace Cvthequeweb.Controllers
         // GET: Projet_Realise/Create
         public ActionResult Create()
         {
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom");
             return View();
         }
 
@@ -46,17 +48,18 @@ namespace Cvthequeweb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Date,Theme,Organisme,CandidatId")] Projet_Realise projet_Realise)
+        public ActionResult Create([Bind(Include = "Id,Date_Projet,Theme,Organisme,Id_Candiat")] Projet_Realise projet_Realise)
         {
             var id = Session["IdCandidat"];
             if (ModelState.IsValid)
             {
-                projet_Realise.CandidatId = id.ToString();
-                db.projets_realise.Add(projet_Realise);
+                projet_Realise.Id_Candiat = int.Parse(id.ToString());
+                db.Projet_Realise.Add(projet_Realise);
                 db.SaveChanges();
                 return RedirectToAction("Create","Langues");
             }
 
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", projet_Realise.Id_Candiat);
             return View(projet_Realise);
         }
 
@@ -67,11 +70,12 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Projet_Realise projet_Realise = db.projets_realise.Find(id);
+            Projet_Realise projet_Realise = db.Projet_Realise.Find(id);
             if (projet_Realise == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", projet_Realise.Id_Candiat);
             return View(projet_Realise);
         }
 
@@ -80,7 +84,7 @@ namespace Cvthequeweb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Date,Theme,Organisme,CandidatId")] Projet_Realise projet_Realise)
+        public ActionResult Edit([Bind(Include = "Id,Date_Projet,Theme,Organisme,Id_Candiat")] Projet_Realise projet_Realise)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +92,7 @@ namespace Cvthequeweb.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Id_Candiat = new SelectList(db.Candidats, "Id", "Nom", projet_Realise.Id_Candiat);
             return View(projet_Realise);
         }
 
@@ -98,7 +103,7 @@ namespace Cvthequeweb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Projet_Realise projet_Realise = db.projets_realise.Find(id);
+            Projet_Realise projet_Realise = db.Projet_Realise.Find(id);
             if (projet_Realise == null)
             {
                 return HttpNotFound();
@@ -111,10 +116,23 @@ namespace Cvthequeweb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Projet_Realise projet_Realise = db.projets_realise.Find(id);
-            db.projets_realise.Remove(projet_Realise);
+            Projet_Realise projet_Realise = db.Projet_Realise.Find(id);
+            db.Projet_Realise.Remove(projet_Realise);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Plus(Projet_Realise projet_Realise,DateTime date,
+            string theme,string organisme)
+        {
+            var id = Session["IdCandidat"];
+            projet_Realise.Date_Projet = date.ToString();
+            projet_Realise.Theme = theme;
+            projet_Realise.Organisme = organisme;
+            projet_Realise.Id_Candiat = int.Parse(id.ToString());
+            db.Projet_Realise.Add(projet_Realise);
+            db.SaveChanges();
+            return Json(0);
         }
 
         protected override void Dispose(bool disposing)

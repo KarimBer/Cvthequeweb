@@ -153,6 +153,8 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -228,12 +230,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Candidat.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Centre_Interet.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Certification.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Competences_Professionnelles.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CandidatController.cs" />
-    <Compile Include="Controllers\Centres_InteretController.cs" />
+    <Compile Include="Controllers\CandidatsController.cs" />
+    <Compile Include="Controllers\Centre_InteretController.cs" />
     <Compile Include="Controllers\CertificationsController.cs" />
-    <Compile Include="Controllers\Competences_ProController.cs" />
-    <Compile Include="Controllers\Experiences_ProController.cs" />
+    <Compile Include="Controllers\Competences_ProfessionnellesController.cs" />
+    <Compile Include="Controllers\Experiences_ProfessionnellesController.cs" />
     <Compile Include="Controllers\FormationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguesController.cs" />
@@ -241,42 +255,88 @@
     <Compile Include="Controllers\Poste_SouhaiteController.cs" />
     <Compile Include="Controllers\Projet_RealiseController.cs" />
     <Compile Include="Controllers\ReferencesController.cs" />
+    <Compile Include="Experiences_Professionnelles.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Formation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCandidat_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCentresInteret_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCertification_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCompetences_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetExperiences_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetFormation_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetJointure_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetLangue_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetPoste_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetProjet_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetReferences_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805151109046_candidat.cs" />
-    <Compile Include="Migrations\201805151109046_candidat.Designer.cs">
-      <DependentUpon>201805151109046_candidat.cs</DependentUpon>
+    <Compile Include="Jointure.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805151111179_exp.cs" />
-    <Compile Include="Migrations\201805151111179_exp.Designer.cs">
-      <DependentUpon>201805151111179_exp.cs</DependentUpon>
+    <Compile Include="Langue.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805151118142_table.cs" />
-    <Compile Include="Migrations\201805151118142_table.Designer.cs">
-      <DependentUpon>201805151118142_table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805151755376_update.cs" />
-    <Compile Include="Migrations\201805151755376_update.Designer.cs">
-      <DependentUpon>201805151755376_update.cs</DependentUpon>
+    <Compile Include="Migrations\201805181141258_compte.cs" />
+    <Compile Include="Migrations\201805181141258_compte.Designer.cs">
+      <DependentUpon>201805181141258_compte.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\Candidat.cs" />
-    <Compile Include="Models\Candidatviewmodel.cs" />
-    <Compile Include="Models\Centres_Interet.cs" />
-    <Compile Include="Models\Certifications.cs" />
-    <Compile Include="Models\Competences_Pro.cs" />
-    <Compile Include="Models\Experiences_Pro.cs" />
-    <Compile Include="Models\Formations.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Langues.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Poste_Souhaite.cs" />
-    <Compile Include="Models\Projet_Realise.cs" />
-    <Compile Include="Models\References.cs" />
+    <Compile Include="Poste_Souhaite.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Projet_Realise.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reference.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Views\Shared\ReportASPX.aspx.cs">
@@ -536,6 +596,16 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="gulpfile.js" />
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
     <Content Include="nucleo-icons.html" />
     <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="Scripts\addedit.js" />
@@ -681,6 +751,13 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\exp.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -766,12 +843,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Candidat\Index.cshtml" />
-    <Content Include="Views\Candidat\Add.cshtml" />
-    <Content Include="Views\Experiences_Pro\Create.cshtml" />
-    <Content Include="Views\Experiences_Pro\Delete.cshtml" />
-    <Content Include="Views\Experiences_Pro\Details.cshtml" />
-    <Content Include="Views\Experiences_Pro\Edit.cshtml" />
     <Content Include="Views\Formations\Create.cshtml" />
     <Content Include="Views\Formations\Delete.cshtml" />
     <Content Include="Views\Formations\Details.cshtml" />
@@ -792,10 +863,6 @@
     <Content Include="Views\Langues\Delete.cshtml" />
     <Content Include="Views\Langues\Details.cshtml" />
     <Content Include="Views\Langues\Edit.cshtml" />
-    <Content Include="Views\Centres_Interet\Create.cshtml" />
-    <Content Include="Views\Centres_Interet\Delete.cshtml" />
-    <Content Include="Views\Centres_Interet\Details.cshtml" />
-    <Content Include="Views\Centres_Interet\Edit.cshtml" />
     <Content Include="Views\References\Create.cshtml" />
     <Content Include="Views\References\Delete.cshtml" />
     <Content Include="Views\References\Details.cshtml" />
@@ -807,6 +874,24 @@
     <Content Include="_aspnet_Cvthequeweb_20180409103510DataSet2.xsc">
       <DependentUpon>_aspnet_Cvthequeweb_20180409103510DataSet2.xsd</DependentUpon>
     </Content>
+    <Content Include="Views\Experiences_Professionnelles\Create.cshtml" />
+    <Content Include="Views\Experiences_Professionnelles\Delete.cshtml" />
+    <Content Include="Views\Experiences_Professionnelles\Details.cshtml" />
+    <Content Include="Views\Experiences_Professionnelles\Edit.cshtml" />
+    <Content Include="Views\Candidats\Create.cshtml" />
+    <Content Include="Views\Candidats\Delete.cshtml" />
+    <Content Include="Views\Candidats\Details.cshtml" />
+    <Content Include="Views\Candidats\Edit.cshtml" />
+    <Content Include="Views\Candidats\Index.cshtml" />
+    <Content Include="Views\Formations\Index.cshtml" />
+    <Content Include="Views\Competences_Professionnelles\Create.cshtml" />
+    <Content Include="Views\Competences_Professionnelles\Delete.cshtml" />
+    <Content Include="Views\Competences_Professionnelles\Details.cshtml" />
+    <Content Include="Views\Competences_Professionnelles\Edit.cshtml" />
+    <Content Include="Views\Centre_Interet\Create.cshtml" />
+    <Content Include="Views\Centre_Interet\Delete.cshtml" />
+    <Content Include="Views\Centre_Interet\Details.cshtml" />
+    <Content Include="Views\Centre_Interet\Edit.cshtml" />
     <None Include="_aspnet_Cvthequeweb_20180409103510DataSet2.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>_aspnet_Cvthequeweb_20180409103510DataSet2.Designer.cs</LastGenOutput>
@@ -824,22 +909,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805151109046_candidat.resx">
-      <DependentUpon>201805151109046_candidat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805151111179_exp.resx">
-      <DependentUpon>201805151111179_exp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805151118142_table.resx">
-      <DependentUpon>201805151118142_table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805151755376_update.resx">
-      <DependentUpon>201805151755376_update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805181141258_compte.resx">
+      <DependentUpon>201805181141258_compte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Report1.rdlc" />
   </ItemGroup>
