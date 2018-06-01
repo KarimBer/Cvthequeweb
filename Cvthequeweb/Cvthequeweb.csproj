@@ -233,6 +233,9 @@
     <Compile Include="Candidat.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Candi_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Centre_Interet.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -255,6 +258,17 @@
     <Compile Include="Controllers\Poste_SouhaiteController.cs" />
     <Compile Include="Controllers\Projet_RealiseController.cs" />
     <Compile Include="Controllers\ReferencesController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="CVThequeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CVThequeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CVThequeDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CVThequeDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Experiences_Professionnelles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -262,6 +276,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GetCandidat_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCandi_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GetCentresInteret_Result.cs">
@@ -325,6 +342,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\CVViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Poste_Souhaite.cs">
@@ -337,7 +355,11 @@
     <Compile Include="Reference.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Reports\MyDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Views\Shared\ReportASPX.aspx.cs">
       <DependentUpon>ReportASPX.aspx</DependentUpon>
@@ -758,6 +780,39 @@
     <Content Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="CVThequeDataSet.xsc">
+      <DependentUpon>CVThequeDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="CVThequeDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CVThequeDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="CVThequeDataSet.xss">
+      <DependentUpon>CVThequeDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="CVThequeDataSet2.xsc">
+      <DependentUpon>CVThequeDataSet2.xsd</DependentUpon>
+    </Content>
+    <None Include="CVThequeDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CVThequeDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="CVThequeDataSet2.xss">
+      <DependentUpon>CVThequeDataSet2.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\MyDataSet.xsc">
+      <DependentUpon>MyDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\MyDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\MyDataSet.xss">
+      <DependentUpon>MyDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\exp.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -784,19 +839,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Views\Shared\ReportASPX.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -892,6 +934,7 @@
     <Content Include="Views\Centre_Interet\Delete.cshtml" />
     <Content Include="Views\Centre_Interet\Details.cshtml" />
     <Content Include="Views\Centre_Interet\Edit.cshtml" />
+    <Content Include="Views\Report\Report.cshtml" />
     <None Include="_aspnet_Cvthequeweb_20180409103510DataSet2.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>_aspnet_Cvthequeweb_20180409103510DataSet2.Designer.cs</LastGenOutput>

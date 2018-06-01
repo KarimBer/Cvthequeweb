@@ -137,5 +137,19 @@ namespace Cvthequeweb
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetReferences_Result>("GetReferences", idParameter);
         }
+    
+        public virtual ObjectResult<GetCandi_Result> GetCandi(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCandi_Result>("GetCandi", idParameter);
+        }
+    
+        public virtual ObjectResult<Candi_Result> Candi(ObjectParameter ok)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Candi_Result>("Candi", ok);
+        }
     }
 }

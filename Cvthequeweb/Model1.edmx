@@ -269,6 +269,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Candi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ok" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="GetCandi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetCandidat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -393,6 +399,9 @@
           <FunctionImport Name="GetReferences" ReturnType="Collection(CVThequeModel.GetReferences_Result)">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GetCandi" ReturnType="Collection(CVThequeModel.GetCandi_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="Candidats" EntityType="CVThequeModel.Candidat" />
           <EntitySet Name="Centre_Interet" EntityType="CVThequeModel.Centre_Interet" />
           <EntitySet Name="Certifications" EntityType="CVThequeModel.Certification" />
@@ -444,7 +453,10 @@
             <End Role="Candidat" EntitySet="Candidats" />
             <End Role="Jointure" EntitySet="Jointures" />
           </AssociationSet>
-        </EntityContainer>
+          <FunctionImport Name="Candi" ReturnType="Collection(CVThequeModel.Candi_Result)">
+            <Parameter Name="Ok" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
         <ComplexType Name="GetCandidat_Result">
           <Property Type="Int32" Name="Age" Nullable="true" />
           <Property Type="String" Name="Nom" Nullable="true" MaxLength="100" />
@@ -532,6 +544,71 @@
           <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="typee" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Id_Candiat" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetCandi_Result">
+          <Property Type="Int32" Name="Age" Nullable="true" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Ville" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Prenom" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Tel" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Genre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Situation_Familiale" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CIN" Nullable="true" MaxLength="50" />
+          <Property Type="Binary" Name="Photo" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Interet" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="Id_Candiat" Nullable="false" />
+          <Property Type="Int32" Name="Id1" Nullable="false" />
+          <Property Type="String" Name="Nom_Certification" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nom_Organisme" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Date_Obtention" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="Id_Candiat1" Nullable="false" />
+          <Property Type="Int32" Name="Id2" Nullable="false" />
+          <Property Type="String" Name="Competence" Nullable="true" MaxLength="1000" />
+          <Property Type="Int32" Name="Id_Candiat2" Nullable="false" />
+          <Property Type="Int32" Name="Id3" Nullable="false" />
+          <Property Type="String" Name="Date_Debut" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Date_Fin" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Nature" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="tyype" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Employeur" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Secteur_Activité" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Titre_Poste" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="descriptiion" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="Duree" Nullable="true" />
+          <Property Type="Int32" Name="Id_Candiat3" Nullable="false" />
+          <Property Type="Int32" Name="Id4" Nullable="false" />
+          <Property Type="String" Name="Diplome" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Specialite" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Date_Obtention1" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Etablissement" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Niveau" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Candiat4" Nullable="false" />
+          <Property Type="Int32" Name="Id5" Nullable="false" />
+          <Property Type="String" Name="Langue" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Niveau1" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Candiat5" Nullable="false" />
+          <Property Type="Int32" Name="Id6" Nullable="false" />
+          <Property Type="String" Name="Titre_Poste1" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="Fourchette_Salarial" Nullable="true" />
+          <Property Type="String" Name="Secteur_Activite" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Candiat6" Nullable="false" />
+          <Property Type="Int32" Name="Id7" Nullable="false" />
+          <Property Type="String" Name="Date_Projet" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Theme" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Organisme" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Id_Candiat7" Nullable="false" />
+          <Property Type="Int32" Name="Id8" Nullable="false" />
+          <Property Type="String" Name="Nom1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Titre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Entreprise" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Telephone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="typee" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Candiat8" Nullable="false" />
         </ComplexType>
         <EntityType Name="Candidat">
           <Key>
@@ -817,7 +894,75 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <ComplexType Name="Candi_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Prenom" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Tel" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Ville" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Date_Naissance" Nullable="true" />
+          <Property Type="String" Name="Genre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Situation_Familiale" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CIN" Nullable="true" MaxLength="50" />
+          <Property Type="Binary" Name="Photo" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Reponse" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Entreprise" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="Id1" Nullable="false" />
+          <Property Type="String" Name="Interet" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="Id_Candiat" Nullable="false" />
+          <Property Type="Int32" Name="Id2" Nullable="false" />
+          <Property Type="String" Name="Nom_Certification" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nom_Organisme" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Date_Obtention" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="Id_Candiat1" Nullable="false" />
+          <Property Type="Int32" Name="Id3" Nullable="false" />
+          <Property Type="String" Name="Competence" Nullable="true" MaxLength="1000" />
+          <Property Type="Int32" Name="Id_Candiat2" Nullable="false" />
+          <Property Type="Int32" Name="Id4" Nullable="false" />
+          <Property Type="String" Name="Date_Debut" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Date_Fin" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Nature" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="tyype" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Employeur" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Secteur_Activité" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Titre_Poste" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="descriptiion" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="Duree" Nullable="true" />
+          <Property Type="Int32" Name="Id_Candiat3" Nullable="false" />
+          <Property Type="Int32" Name="Id5" Nullable="false" />
+          <Property Type="String" Name="Diplome" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Specialite" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Date_Obtention1" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Etablissement" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Niveau" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Candiat4" Nullable="false" />
+          <Property Type="Int32" Name="Id6" Nullable="false" />
+          <Property Type="String" Name="Langue" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Niveau1" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Candiat5" Nullable="false" />
+          <Property Type="Int32" Name="Id7" Nullable="false" />
+          <Property Type="String" Name="Titre_Poste1" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="Fourchette_Salarial" Nullable="true" />
+          <Property Type="String" Name="Secteur_Activite" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Candiat6" Nullable="false" />
+          <Property Type="Int32" Name="Id8" Nullable="false" />
+          <Property Type="String" Name="Date_Projet" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Theme" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Organisme" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Id_Candiat7" Nullable="false" />
+          <Property Type="Int32" Name="Id9" Nullable="false" />
+          <Property Type="String" Name="Nom1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Titre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Entreprise1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Telephone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="typee" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Candiat8" Nullable="false" />
+        </ComplexType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -952,6 +1097,75 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="typee" ColumnName="typee" />
                 <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCandi" FunctionName="CVThequeModel.Store.GetCandi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CVThequeModel.GetCandi_Result">
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Situation_Familiale" ColumnName="Situation_Familiale" />
+                <ScalarProperty Name="CIN" ColumnName="CIN" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Interet" ColumnName="Interet" />
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+                <ScalarProperty Name="Id1" ColumnName="Id1" />
+                <ScalarProperty Name="Nom_Certification" ColumnName="Nom_Certification" />
+                <ScalarProperty Name="Nom_Organisme" ColumnName="Nom_Organisme" />
+                <ScalarProperty Name="Date_Obtention" ColumnName="Date_Obtention" />
+                <ScalarProperty Name="Id_Candiat1" ColumnName="Id_Candiat1" />
+                <ScalarProperty Name="Id2" ColumnName="Id2" />
+                <ScalarProperty Name="Competence" ColumnName="Competence" />
+                <ScalarProperty Name="Id_Candiat2" ColumnName="Id_Candiat2" />
+                <ScalarProperty Name="Id3" ColumnName="Id3" />
+                <ScalarProperty Name="Date_Debut" ColumnName="Date_Debut" />
+                <ScalarProperty Name="Date_Fin" ColumnName="Date_Fin" />
+                <ScalarProperty Name="Nature" ColumnName="Nature" />
+                <ScalarProperty Name="tyype" ColumnName="tyype" />
+                <ScalarProperty Name="Employeur" ColumnName="Employeur" />
+                <ScalarProperty Name="Secteur_Activité" ColumnName="Secteur_Activité" />
+                <ScalarProperty Name="Titre_Poste" ColumnName="Titre_Poste" />
+                <ScalarProperty Name="descriptiion" ColumnName="descriptiion" />
+                <ScalarProperty Name="Duree" ColumnName="Duree" />
+                <ScalarProperty Name="Id_Candiat3" ColumnName="Id_Candiat3" />
+                <ScalarProperty Name="Id4" ColumnName="Id4" />
+                <ScalarProperty Name="Diplome" ColumnName="Diplome" />
+                <ScalarProperty Name="Specialite" ColumnName="Specialite" />
+                <ScalarProperty Name="Date_Obtention1" ColumnName="Date_Obtention1" />
+                <ScalarProperty Name="Etablissement" ColumnName="Etablissement" />
+                <ScalarProperty Name="Niveau" ColumnName="Niveau" />
+                <ScalarProperty Name="Id_Candiat4" ColumnName="Id_Candiat4" />
+                <ScalarProperty Name="Id5" ColumnName="Id5" />
+                <ScalarProperty Name="Langue" ColumnName="Langue" />
+                <ScalarProperty Name="Niveau1" ColumnName="Niveau1" />
+                <ScalarProperty Name="Id_Candiat5" ColumnName="Id_Candiat5" />
+                <ScalarProperty Name="Id6" ColumnName="Id6" />
+                <ScalarProperty Name="Titre_Poste1" ColumnName="Titre_Poste1" />
+                <ScalarProperty Name="Fourchette_Salarial" ColumnName="Fourchette_Salarial" />
+                <ScalarProperty Name="Secteur_Activite" ColumnName="Secteur_Activite" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Id_Candiat6" ColumnName="Id_Candiat6" />
+                <ScalarProperty Name="Id7" ColumnName="Id7" />
+                <ScalarProperty Name="Date_Projet" ColumnName="Date_Projet" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="Organisme" ColumnName="Organisme" />
+                <ScalarProperty Name="Id_Candiat7" ColumnName="Id_Candiat7" />
+                <ScalarProperty Name="Id8" ColumnName="Id8" />
+                <ScalarProperty Name="Nom1" ColumnName="Nom1" />
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
+                <ScalarProperty Name="Entreprise" ColumnName="Entreprise" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="typee" ColumnName="typee" />
+                <ScalarProperty Name="Id_Candiat8" ColumnName="Id_Candiat8" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1090,7 +1304,79 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="Candi" FunctionName="CVThequeModel.Store.Candi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CVThequeModel.Candi_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Date_Naissance" ColumnName="Date_Naissance" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Situation_Familiale" ColumnName="Situation_Familiale" />
+                <ScalarProperty Name="CIN" ColumnName="CIN" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Reponse" ColumnName="Reponse" />
+                <ScalarProperty Name="Entreprise" ColumnName="Entreprise" />
+                <ScalarProperty Name="Id1" ColumnName="Id1" />
+                <ScalarProperty Name="Interet" ColumnName="Interet" />
+                <ScalarProperty Name="Id_Candiat" ColumnName="Id_Candiat" />
+                <ScalarProperty Name="Id2" ColumnName="Id2" />
+                <ScalarProperty Name="Nom_Certification" ColumnName="Nom_Certification" />
+                <ScalarProperty Name="Nom_Organisme" ColumnName="Nom_Organisme" />
+                <ScalarProperty Name="Date_Obtention" ColumnName="Date_Obtention" />
+                <ScalarProperty Name="Id_Candiat1" ColumnName="Id_Candiat1" />
+                <ScalarProperty Name="Id3" ColumnName="Id3" />
+                <ScalarProperty Name="Competence" ColumnName="Competence" />
+                <ScalarProperty Name="Id_Candiat2" ColumnName="Id_Candiat2" />
+                <ScalarProperty Name="Id4" ColumnName="Id4" />
+                <ScalarProperty Name="Date_Debut" ColumnName="Date_Debut" />
+                <ScalarProperty Name="Date_Fin" ColumnName="Date_Fin" />
+                <ScalarProperty Name="Nature" ColumnName="Nature" />
+                <ScalarProperty Name="tyype" ColumnName="tyype" />
+                <ScalarProperty Name="Employeur" ColumnName="Employeur" />
+                <ScalarProperty Name="Secteur_Activité" ColumnName="Secteur_Activité" />
+                <ScalarProperty Name="Titre_Poste" ColumnName="Titre_Poste" />
+                <ScalarProperty Name="descriptiion" ColumnName="descriptiion" />
+                <ScalarProperty Name="Duree" ColumnName="Duree" />
+                <ScalarProperty Name="Id_Candiat3" ColumnName="Id_Candiat3" />
+                <ScalarProperty Name="Id5" ColumnName="Id5" />
+                <ScalarProperty Name="Diplome" ColumnName="Diplome" />
+                <ScalarProperty Name="Specialite" ColumnName="Specialite" />
+                <ScalarProperty Name="Date_Obtention1" ColumnName="Date_Obtention1" />
+                <ScalarProperty Name="Etablissement" ColumnName="Etablissement" />
+                <ScalarProperty Name="Niveau" ColumnName="Niveau" />
+                <ScalarProperty Name="Id_Candiat4" ColumnName="Id_Candiat4" />
+                <ScalarProperty Name="Id6" ColumnName="Id6" />
+                <ScalarProperty Name="Langue" ColumnName="Langue" />
+                <ScalarProperty Name="Niveau1" ColumnName="Niveau1" />
+                <ScalarProperty Name="Id_Candiat5" ColumnName="Id_Candiat5" />
+                <ScalarProperty Name="Id7" ColumnName="Id7" />
+                <ScalarProperty Name="Titre_Poste1" ColumnName="Titre_Poste1" />
+                <ScalarProperty Name="Fourchette_Salarial" ColumnName="Fourchette_Salarial" />
+                <ScalarProperty Name="Secteur_Activite" ColumnName="Secteur_Activite" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Id_Candiat6" ColumnName="Id_Candiat6" />
+                <ScalarProperty Name="Id8" ColumnName="Id8" />
+                <ScalarProperty Name="Date_Projet" ColumnName="Date_Projet" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="Organisme" ColumnName="Organisme" />
+                <ScalarProperty Name="Id_Candiat7" ColumnName="Id_Candiat7" />
+                <ScalarProperty Name="Id9" ColumnName="Id9" />
+                <ScalarProperty Name="Nom1" ColumnName="Nom1" />
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
+                <ScalarProperty Name="Entreprise1" ColumnName="Entreprise1" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="typee" ColumnName="typee" />
+                <ScalarProperty Name="Id_Candiat8" ColumnName="Id_Candiat8" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

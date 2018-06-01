@@ -7,6 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Cvthequeweb;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Core.Objects.DataClasses;
+using System.Data.Entity.Infrastructure;
+using System.Configuration;
+using System.Data.SqlClient;
+using Cvthequeweb.Models;
 
 namespace Cvthequeweb.Controllers
 {
@@ -17,7 +23,15 @@ namespace Cvthequeweb.Controllers
         // GET: Candidats
         public ActionResult Index()
         {
-            return View(db.Candidats.ToList());
+            var viewModel = new CVViewModel()
+            {
+                Candidats = db.Candidats.ToList(),
+                Poste_Souhaites = db.Poste_Souhaite.ToList(),
+                Formations = db.Formations.ToList(),
+
+            };
+
+            return View(viewModel);
         }
 
         // GET: Candidats/Details/5
@@ -46,10 +60,15 @@ namespace Cvthequeweb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nom,Prenom,Email,Tel,Adresse,Ville,Date_Naissance,Genre,Situation_Familiale,CIN,Photo,Reponse,Entreprise")] Candidat candidat)
+        public ActionResult Create([Bind(Include = "Id,Nom,Prenom,Email,Tel,Adresse,Ville,Date_Naissance,Genre,Situation_Familiale,CIN,Photo,Reponse,Entreprise")] Candidat candidat , HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
+                if(upload!=null)
+                {
+                    candidat.Photo = new byte[upload.ContentLength];
+                    upload.InputStream.Read(candidat.Photo, 0, upload.ContentLength);
+                }
                 db.Candidats.Add(candidat);
                 db.SaveChanges();
                 Session["IdCandidat"] = candidat.Id;

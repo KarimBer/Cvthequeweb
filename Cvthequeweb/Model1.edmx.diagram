@@ -6,16 +6,16 @@
     <edmx:Diagrams>
       <Diagram DiagramId="6818fc860a4c4b8d98113a42b8b5b01f" Name="Diagram1">
         <EntityTypeShape EntityType="CVThequeModel.Candidat" Width="1.5" PointX="0.75" PointY="14.25" />
-        <EntityTypeShape EntityType="CVThequeModel.Centre_Interet" Width="1.5" PointX="3" PointY="30" />
-        <EntityTypeShape EntityType="CVThequeModel.Certification" Width="1.5" PointX="3" PointY="17.625" />
-        <EntityTypeShape EntityType="CVThequeModel.Competences_Professionnelles" Width="1.5" PointX="3" PointY="9.125" />
-        <EntityTypeShape EntityType="CVThequeModel.Experiences_Professionnelles" Width="1.5" PointX="3" PointY="5" />
-        <EntityTypeShape EntityType="CVThequeModel.Formation" Width="1.5" PointX="3" PointY="23.5" />
-        <EntityTypeShape EntityType="CVThequeModel.Jointure" Width="1.5" PointX="3" PointY="11.625" />
-        <EntityTypeShape EntityType="CVThequeModel.Langue" Width="1.5" PointX="3" PointY="2.25" />
-        <EntityTypeShape EntityType="CVThequeModel.Poste_Souhaite" Width="1.5" PointX="3" PointY="26.875" />
-        <EntityTypeShape EntityType="CVThequeModel.Projet_Realise" Width="1.5" PointX="3" PointY="20.625" />
-        <EntityTypeShape EntityType="CVThequeModel.Reference" Width="1.5" PointX="3" PointY="14.125" />
+        <EntityTypeShape EntityType="CVThequeModel.Centre_Interet" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="CVThequeModel.Certification" Width="1.5" PointX="3" PointY="23.75" />
+        <EntityTypeShape EntityType="CVThequeModel.Competences_Professionnelles" Width="1.5" PointX="3" PointY="17.125" />
+        <EntityTypeShape EntityType="CVThequeModel.Experiences_Professionnelles" Width="1.5" PointX="3" PointY="19.625" />
+        <EntityTypeShape EntityType="CVThequeModel.Formation" Width="1.5" PointX="3" PointY="2.25" />
+        <EntityTypeShape EntityType="CVThequeModel.Jointure" Width="1.5" PointX="3" PointY="14.625" />
+        <EntityTypeShape EntityType="CVThequeModel.Langue" Width="1.5" PointX="3" PointY="26.625" />
+        <EntityTypeShape EntityType="CVThequeModel.Poste_Souhaite" Width="1.5" PointX="3" PointY="29.375" />
+        <EntityTypeShape EntityType="CVThequeModel.Projet_Realise" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="CVThequeModel.Reference" Width="1.5" PointX="3" PointY="11.125" />
         <AssociationConnector Association="CVThequeModel.FK_Candidat_Centre_Interet" />
         <AssociationConnector Association="CVThequeModel.FK_Candidat_Certifications" />
         <AssociationConnector Association="CVThequeModel.FK_Candidat_Competences_Professionnelles" />
